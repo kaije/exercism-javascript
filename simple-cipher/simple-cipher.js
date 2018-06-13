@@ -5,12 +5,16 @@ class Cipher {
     this.keyArray = key.split('');
   }
 
-  encode(text) {
+  encode(text) { 
+    let newKey = this.getKeyInstance(text);
+    console.log(newKey);
+    let newKeyArray = newKey.split('');
+    console.log(newKeyArray);
     /* for each letter in the text, add the index of the corresponding letter in the key to the
     index of the original letter, and return the letter at the resulting index */
     return text
       .split('')
-      .map((letter, index) => this.alphabet[(this.alphabet.indexOf(letter) + this.alphabet.indexOf(this.keyArray[index])) % 26])
+      .map((letter, index) => this.alphabet[(this.alphabet.indexOf(letter) + this.alphabet.indexOf(newKeyArray[index])) % 26])
       .join('');
   }
 
@@ -26,6 +30,11 @@ class Cipher {
         return this.alphabet[decodeIndex];
       })
       .join('');
+  }
+
+  getKeyInstance(text) {
+    /* if the text is longer than the key, generate a new key by repeating the key enough times to make it longer than the text */
+    return ((text.length > this.key.length) ? this.key.repeat(Math.ceil(text.length/this.key.length)) : this.key);
   }
 }
 
