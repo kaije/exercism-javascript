@@ -1,18 +1,15 @@
 class Cipher {
-  constructor(key = 'ddddddddddddddddd') {
-    this.alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
-    this.key = key;
-    this.keyArray = key.split('');
+  constructor(key) {
+    this.alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');   
+    this.key = key ? this.validateKey(key) : this.getRandomKey();
+    this.keyArray = this.key.split('');    
   }
 
   encode(text) { 
     let newKey = this.getKeyInstance(text);
-    console.log(newKey);
     let newKeyArray = newKey.split('');
-    console.log(newKeyArray);
     /* for each letter in the text, add the index of the corresponding letter in the key to the
     index of the original letter, and return the letter at the resulting index */
-    console.log(this.alphabet.lastIndexOf());
     return text
       .split('')
       .map((letter, index) => this.alphabet[(this.alphabet.indexOf(letter) + this.alphabet.indexOf(newKeyArray[index])) % (this.alphabet.length)])
@@ -36,6 +33,28 @@ class Cipher {
   getKeyInstance(text) {
     /* if the text is longer than the key, generate a new key by repeating the key enough times to make it longer than the text */
     return ((text.length > this.key.length) ? this.key.repeat(Math.ceil(text.length/this.key.length)) : this.key);
+  }
+
+  getRandomKey() {
+    console.log('called getRandomKey()');
+    let randomKey = [];    
+    for (var i=0; i < 100; i++) {
+      randomKey.push(this.alphabet[this.getRandomIndex()]);
+    }
+    return randomKey.join('');
+  }
+
+  getRandomIndex() {
+    return Math.floor(Math.random() * 25);
+  }
+
+  validateKey(key) {
+    let regex = /^[a-z]+$/;
+    if (regex.test(key)) {
+      return key;
+    } else {
+      throw new Error('Bad key');      
+    }    
   }
 }
 

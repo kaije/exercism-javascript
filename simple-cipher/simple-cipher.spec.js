@@ -1,7 +1,7 @@
 import Cipher from './simple-cipher';
 
 describe('Random key generation', () => {
-  xtest('generates keys at random', () => {
+  test('generates keys at random', () => {
     // Strictly speaking, this is difficult to test with 100% certainty.
     // But, if you have a generator that generates 100-character-long
     // strings of lowercase letters at random, the odds of two consecutively
@@ -17,35 +17,35 @@ describe('Random key cipher', () => {
     expect(cipher.key).toMatch(/^[a-z]+$/);
   });
 
-  xtest('has a key that is at least 100 characters long', () => {
+  test('has a key that is at least 100 characters long', () => {
     expect(cipher.key.length).toBeGreaterThanOrEqual(100);
   });
 
   // Here we take advantage of the fact that plaintext of "aaa..."
   // outputs the key. This is a critical problem with shift ciphers, some
   // characters will always output the key verbatim.
-  xtest('can encode', () => {
+  test('can encode', () => {
     expect(cipher.encode('aaaaaaaaaa')).toEqual(cipher.key.substr(0, 10));
   });
 
-  xtest('can decode', () => {
+  test('can decode', () => {
     expect(cipher.decode(cipher.key.substr(0, 10))).toEqual('aaaaaaaaaa');
   });
 
-  xtest('is reversible', () => {
+  test('is reversible', () => {
     const plaintext = 'abcdefghij';
     expect(cipher.decode(cipher.encode(plaintext))).toEqual(plaintext);
   });
 });
 
 describe('Incorrect key cipher', () => {
-  xtest('throws an error with an all caps key', () => {
+  test('throws an error with an all caps key', () => {
     expect(() => {
       new Cipher('ABCDEF');
     }).toThrow(new Error('Bad key'));
   });
 
-  xtest('throws an error with a numeric key', () => {
+  test('throws an error with a numeric key', () => {
     expect(() => {
       new Cipher('12345');
     }).toThrow(new Error('Bad key'));
