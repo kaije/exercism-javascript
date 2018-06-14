@@ -87,11 +87,11 @@ describe('Substitution cipher', () => {
     expect(cipher.encode('zzzzzzzzzz')).toEqual('zabcdefghi');
   });
 
-  xtest('can wrap on decode', () => {
+  test('can wrap on decode', () => {
     expect(cipher.decode('zabcdefghi')).toEqual('zzzzzzzzzz');
   });
 
-  xtest('can handle messages longer than the key', function() {
+  test('can handle messages longer than the key', function() {
     expect(new Cipher('abc').encode('iamapandabear'))
       .toEqual('iboaqcnecbfcr');
   });

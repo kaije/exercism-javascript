@@ -12,9 +12,10 @@ class Cipher {
     console.log(newKeyArray);
     /* for each letter in the text, add the index of the corresponding letter in the key to the
     index of the original letter, and return the letter at the resulting index */
+    console.log(this.alphabet.lastIndexOf());
     return text
       .split('')
-      .map((letter, index) => this.alphabet[(this.alphabet.indexOf(letter) + this.alphabet.indexOf(newKeyArray[index])) % 26])
+      .map((letter, index) => this.alphabet[(this.alphabet.indexOf(letter) + this.alphabet.indexOf(newKeyArray[index])) % (this.alphabet.length)])
       .join('');
   }
 
@@ -26,7 +27,7 @@ class Cipher {
       .map((letter, index) => {
         let decodeIndex = (this.alphabet.indexOf(letter) - this.alphabet.indexOf(this.keyArray[index]));
         // if the index is negative, wrap around (e.g. -1 becomes 25)
-        decodeIndex = decodeIndex < 0 ? (26 + decodeIndex) : decodeIndex;
+        decodeIndex = decodeIndex < 0 ? ((this.alphabet.length) + decodeIndex) : decodeIndex;
         return this.alphabet[decodeIndex];
       })
       .join('');
