@@ -14,13 +14,13 @@ class Pangram {
       stringArr.forEach(element => {
         this.alphabet.includes(element) ? letterTally.set(element, letterTally.get(element) + 1) : null;
       });
-      let thing = true;
+      let verdict = true;
       letterTally.forEach((count, letter, map) => {
         if (count === 0) {
-          thing = false;
+          verdict = false;
         }
       });
-      return thing;
+      return verdict;
     }
   }
 }
