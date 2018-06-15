@@ -36,7 +36,6 @@ class Cipher {
   }
 
   getRandomKey() {
-    console.log('called getRandomKey()');
     let randomKey = [];    
     for (var i=0; i < 100; i++) {
       randomKey.push(this.alphabet[this.getRandomIndex()]);
