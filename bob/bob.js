@@ -1,29 +1,33 @@
 class Bob {
-  hey(message) {    
-    if (!message.trim()) {
+  hey(message) {
+    if (Bob.getsTheSilentTreatment(message)) {
       return 'Fine. Be that way!';
-    } else if (this.hasAtLeastOneLetter(message) && this.isAllCaps(message) && this.isAQuestion(message)) {
+    } else if (this.hasAtLeastOneLetter(message) && Bob.isYelledAt(message) && Bob.isQuestioned(message)) {
       return 'Calm down, I know what I\'m doing!';
-    } else if (this.hasAtLeastOneLetter(message) && this.isAllCaps(message)) {
+    } else if (this.hasAtLeastOneLetter(message) && Bob.isYelledAt(message)) {
       return 'Whoa, chill out!';
-    } else if (this.isAQuestion(message)) {
+    } else if (Bob.isQuestioned(message)) {
       return 'Sure.';
-    } else {
-      return 'Whatever.';
     }
+    return 'Whatever.';
+  }
+
+  static isYelledAt(message) {
+    return message === message.toUpperCase(); // message is all caps
+  }
+
+  static isQuestioned(message) {
+    return /\?$/.test(message); // message ends with a question
+  }
+
+  static getsTheSilentTreatment(message) {
+    return !message.trim(); // message is not empty
   }
 
   hasAtLeastOneLetter(message) {
     return /[a-zA-Z]/.test(message);
   }
 
-  isAllCaps(message) {
-    return message === message.toUpperCase();
-  }
-
-  isAQuestion(message) {
-    return /\?$/.test(message);
-  }
 }
 
 export default Bob;
