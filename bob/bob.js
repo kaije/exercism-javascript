@@ -2,9 +2,9 @@ class Bob {
   hey(message) {    
     if (!message.trim()) {
       return 'Fine. Be that way!';
-    } else if (/[a-zA-Z]/.test(message) && message === message.toUpperCase() && /\?$/.test(message)) {
+    } else if (this.atLeastOneLetter(message) && message === message.toUpperCase() && /\?$/.test(message)) {
       return 'Calm down, I know what I\'m doing!';    
-    } else if (/[a-zA-Z]/.test(message) && message === message.toUpperCase()) {
+    } else if (this.atLeastOneLetter(message) && message === message.toUpperCase()) {
       return 'Whoa, chill out!';
     } else if (/\?$/.test(message)) {
       return 'Sure.';
@@ -12,7 +12,11 @@ class Bob {
       return 'Whatever.';
     }
   }
+
+  atLeastOneLetter(message) {
+    return /[a-zA-Z]/.test(message);
+  }
+
 }
 
 export default Bob;
-
