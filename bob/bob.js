@@ -2,13 +2,20 @@ class Bob {
   hey(message) {
     if (Bob.getsTheSilentTreatment(message)) {
       return 'Fine. Be that way!';
-    } else if (this.hasAtLeastOneLetter(message) && Bob.isYelledAt(message) && Bob.isQuestioned(message)) {
+    }
+
+    if (this.hasAtLeastOneLetter(message) && Bob.isYelledAt(message) && Bob.isQuestioned(message)) {
       return 'Calm down, I know what I\'m doing!';
-    } else if (this.hasAtLeastOneLetter(message) && Bob.isYelledAt(message)) {
+    }
+
+    if (this.hasAtLeastOneLetter(message) && Bob.isYelledAt(message)) {
       return 'Whoa, chill out!';
-    } else if (Bob.isQuestioned(message)) {
+    }
+
+    if (Bob.isQuestioned(message)) {
       return 'Sure.';
     }
+
     return 'Whatever.';
   }
 
