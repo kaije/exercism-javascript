@@ -3,7 +3,7 @@ class Bob {
     if (!message.trim()) {
       return 'Fine. Be that way!';
     } else if (this.hasAtLeastOneLetter(message) && this.isAllCaps(message) && this.isAQuestion(message)) {
-      return 'Calm down, I know what I\'m doing!';    
+      return 'Calm down, I know what I\'m doing!';
     } else if (this.hasAtLeastOneLetter(message) && this.isAllCaps(message)) {
       return 'Whoa, chill out!';
     } else if (this.isAQuestion(message)) {
