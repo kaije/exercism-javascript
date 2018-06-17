@@ -4,7 +4,10 @@ class Gigasecond {
   }
 
   date() {
-    return new Date(this.birthdate.setSeconds(1000000000));
+    /* getTime() always uses UTC for time representation, and
+       returns the number of milliseconds since Jan 1, 1970, 00:00:00.000.
+       We can then add 1 gigasecond in milliseconds to this. */
+    return new Date(this.birthdate.getTime() + 1e12);
   }
 } 
 
