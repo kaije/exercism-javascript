@@ -1,7 +1,11 @@
 class Gigasecond {
-  constructor() {}
+  constructor(birthdate) {
+    this.birthdate = birthdate;
+  }
 
-  date() {}
+  date() {
+    return new Date(this.birthdate.setSeconds(1000000000));
+  }
 } 
 
 export default Gigasecond;
