@@ -16,6 +16,10 @@ class SpaceAge {
     this.ageInEarthYears = seconds / secondsPerEarthYear;
   }
 
+  calculateYears(planet) {
+    return this.formatResult(this.ageInEarthYears / orbitalPeriodsInEarthYears[planet]);
+  }
+
   formatResult(years) {
     return Number.parseFloat(Number.parseFloat(years).toFixed(2));
   }
@@ -25,31 +29,31 @@ class SpaceAge {
   }
 
   onMercury() {
-    return this.formatResult(this.ageInEarthYears / orbitalPeriodsInEarthYears.Mercury);
+    return this.calculateYears('Mercury');
   }
 
   onVenus() {
-    return this.formatResult(this.ageInEarthYears / orbitalPeriodsInEarthYears.Venus);
+    return this.calculateYears('Venus');    
   }
 
   onMars() {
-    return this.formatResult(this.ageInEarthYears / orbitalPeriodsInEarthYears.Mars);
+    return this.calculateYears('Mars');
   }
 
   onJupiter() {
-    return this.formatResult(this.ageInEarthYears / orbitalPeriodsInEarthYears.Jupiter);
+    return this.calculateYears('Jupiter');
   }
 
   onSaturn() {
-    return this.formatResult(this.ageInEarthYears / orbitalPeriodsInEarthYears.Saturn);
+    return this.calculateYears('Saturn');
   }
 
   onUranus() {
-    return this.formatResult(this.ageInEarthYears / orbitalPeriodsInEarthYears.Uranus);
+    return this.calculateYears('Uranus');
   }
 
   onNeptune() {
-    return this.formatResult(this.ageInEarthYears / orbitalPeriodsInEarthYears.Neptune);
+    return this.calculateYears('Neptune');
   }
 }
 
