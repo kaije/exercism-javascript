@@ -1,6 +1,6 @@
 const secondsPerEarthYear = 31557600;
 
-const orbitalPeriodsInEarthYear = {
+const orbitalPeriodsInEarthYears = {
   Mercury: 0.2408467,
   Venus: 0.61519726,
   Mars: 1.8808158,
@@ -25,31 +25,31 @@ class SpaceAge {
   }
 
   onMercury() {
-    return this.formatResult(this.ageInEarthYears / orbitalPeriodsInEarthYear.Mercury);
+    return this.formatResult(this.ageInEarthYears / orbitalPeriodsInEarthYears.Mercury);
   }
 
   onVenus() {
-    return this.formatResult(this.ageInEarthYears / orbitalPeriodsInEarthYear.Venus);
+    return this.formatResult(this.ageInEarthYears / orbitalPeriodsInEarthYears.Venus);
   }
 
   onMars() {
-    return this.formatResult(this.ageInEarthYears / orbitalPeriodsInEarthYear.Mars);
+    return this.formatResult(this.ageInEarthYears / orbitalPeriodsInEarthYears.Mars);
   }
 
   onJupiter() {
-    return this.formatResult(this.ageInEarthYears / orbitalPeriodsInEarthYear.Jupiter);
+    return this.formatResult(this.ageInEarthYears / orbitalPeriodsInEarthYears.Jupiter);
   }
 
   onSaturn() {
-    return this.formatResult(this.ageInEarthYears / orbitalPeriodsInEarthYear.Saturn);
+    return this.formatResult(this.ageInEarthYears / orbitalPeriodsInEarthYears.Saturn);
   }
 
   onUranus() {
-    return this.formatResult(this.ageInEarthYears / orbitalPeriodsInEarthYear.Uranus);
+    return this.formatResult(this.ageInEarthYears / orbitalPeriodsInEarthYears.Uranus);
   }
 
   onNeptune() {
-    return this.formatResult(this.ageInEarthYears / orbitalPeriodsInEarthYear.Neptune);
+    return this.formatResult(this.ageInEarthYears / orbitalPeriodsInEarthYears.Neptune);
   }
 }
 
