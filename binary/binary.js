@@ -9,13 +9,10 @@ export default class Binary {
   }
 
   convert() {
-    let decimal = 0;
-    let exponent = 0;
-    
-    for (let i = this.binaryString.length - 1; i >= 0; i--) {
-      decimal = decimal + (this.binaryString.charAt(i) * 2**exponent);
-      exponent++;
-    }
-    return decimal;
+    return this.binaryString
+      .split('')
+      .reverse()
+      .map( (value, index) => value * 2**index)
+      .reduce( (sum, digit) => sum + digit);
   }
 }
