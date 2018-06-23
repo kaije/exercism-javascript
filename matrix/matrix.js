@@ -9,9 +9,6 @@ export default class Matrix {
         this.rows[index] = rowArr;
       });
 
-      console.log(this.rows);
-      console.log(this.columns);
-
     this.rows.forEach( (rowArr, rowIndex) => {
       rowArr.forEach( (element, colIndex) => {
         this.columns[colIndex] = this.columns[colIndex] || [];
