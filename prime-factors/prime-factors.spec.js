@@ -24,5 +24,7 @@ describe('primeFactors', () => {
 
   xtest('factors 93819012551', () => expect(primeFactors.for(93819012551)).toEqual([11, 9539, 894119]));
 
+  test('factors 100', () => expect(primeFactors.for(100)).toEqual([2,3,4]));
+
   test('factors 40', () => expect(primeFactors.for(40)).toEqual([2,2,2,5]));
 });
