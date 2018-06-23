@@ -14,4 +14,3 @@ describe('Matrix', () => {
       .toEqual([1903, 3, 4]);
   });
 });
-// 
