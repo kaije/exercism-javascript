@@ -14,54 +14,46 @@ export default class LinkedList {
   }
 
   push(value) {
-    const newNode = new Node(value, null, null);
+    const node = new Node(value, null, null);
     if (this.isEmpty()) {
       this.addFirstNode(value);
     } else {
-      this.addNode(newNode);
-      this.setTail(newNode);
+      this.addNode(node);
+      this.setTail(node);
     }
   }
 
   pop() {
-    if (this.tail) {      
+    if (!this.isEmpty()) {      
       let oldTail = this.tail;
       let newTail = oldTail.prev;
-      let returnValue = oldTail.value;
       this.tail = newTail;
-      this.list.delete(oldTail.value);
-      if (this.count() === 0) {
-        this.head = null;
-        this.tail = null;
-      }
-      return returnValue;
+      this.count() === 1 
+        ? this.removeLastNode() 
+        : this.list.delete(oldTail.value);
+      return oldTail.value;
     }
   }
 
   unshift(value) {
-    const newNode = new Node(value, null, null);
+    const node = new Node(value, null, null);
     if (this.isEmpty()) {
       this.addFirstNode(value);
     } else {
-      this.addNode(newNode);      
-      newNode.next = this.head;
-      this.head.prev = newNode;
-      this.head = newNode;
+      this.addNode(node);   
+      this.setHead(node);   
     }
   }  
 
   shift() {
-    if (this.head) {
+    if (!this.isEmpty()) {
       let oldHead = this.head;
       let newHead = oldHead.next;
-      let returnValue = oldHead.value;
       this.head = newHead;
-      this.list.delete(oldHead.value);
-      if (this.count() === 0) {
-        this.head = null;
-        this.tail = null;
-      }      
-      return returnValue;
+      this.count() === 1 
+        ? this.removeLastNode() 
+        : this.list.delete(oldHead.value);
+      return oldHead.value;
     }
   }  
 
@@ -76,29 +68,26 @@ export default class LinkedList {
       if (this.count() === 1) {
         this.removeLastNode();
       } else if (this.head.value === value ) {
-        // if target is the head
         this.shift(value);
       } else if (this.tail.value === value) {
-        // target is the tail
         this.pop(value);
       } else {
         targetNode.prev.next = targetNode.next;
         targetNode.next.prev = targetNode.prev;
-
         this.list.delete(value);
       }      
     }
   }
 
   isEmpty() {
-    return !this.head && !this.tail;
+    return (!this.head && !this.tail) || this.count() === 0;
   }
 
   addFirstNode(value) {
-    const newNode = new Node(value, null, null);
-    this.addNode(newNode);
-    this.head = newNode;
-    this.tail = newNode;
+    const node = new Node(value, null, null);
+    this.addNode(node);
+    this.head = node;
+    this.tail = node;
   }
 
   removeLastNode() {
@@ -107,13 +96,20 @@ export default class LinkedList {
     this.tail = null;
   }
 
-  addNode(newNode) {
-    this.list.set(newNode.value, newNode);
+  addNode(node) {
+    this.list.set(node.value, node);
   }
 
-  setTail(newNode) {
-    newNode.prev = this.tail;
-    this.tail.next = newNode;
-    this.tail = newNode;
+  setHead(node) {      
+    node.next = this.head;
+    this.head.prev = node;
+    this.head = node;
   }
+
+  setTail(node) {
+    node.prev = this.tail;
+    this.tail.next = node;
+    this.tail = node;
+  }
+
 } 
