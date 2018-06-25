@@ -15,18 +15,16 @@ export default class LinkedList {
 
   push(value) {
     const newNode = new Node(value, null, null);
-    if (!this.head) {
+    if (this.isEmpty()) {
       this.addFirstNode(value);
     } else {
-      newNode.prev = this.tail;
-      this.tail.next = newNode;
-      this.list.set(value, newNode);
-      this.tail = newNode;
+      this.addNode(newNode);
+      this.setTail(newNode);
     }
   }
 
   pop() {
-    if (this.tail) {
+    if (this.tail) {      
       let oldTail = this.tail;
       let newTail = oldTail.prev;
       let returnValue = oldTail.value;
@@ -42,12 +40,12 @@ export default class LinkedList {
 
   unshift(value) {
     const newNode = new Node(value, null, null);
-    if (!this.head) {
+    if (this.isEmpty()) {
       this.addFirstNode(value);
     } else {
+      this.addNode(newNode);      
       newNode.next = this.head;
       this.head.prev = newNode;
-      this.list.set(value, newNode);
       this.head = newNode;
     }
   }  
@@ -76,7 +74,7 @@ export default class LinkedList {
 
     if (targetNode) {
       if (this.count() === 1) {
-        this.emptyList();
+        this.removeLastNode();
       } else if (this.head.value === value ) {
         // if target is the head
         this.shift(value);
@@ -92,16 +90,30 @@ export default class LinkedList {
     }
   }
 
+  isEmpty() {
+    return !this.head && !this.tail;
+  }
+
   addFirstNode(value) {
     const newNode = new Node(value, null, null);
-    this.list.set(value, newNode);
+    this.addNode(newNode);
     this.head = newNode;
     this.tail = newNode;
   }
 
-  emptyList() {
+  removeLastNode() {
     this.list.clear();
     this.head = null;
     this.tail = null;
+  }
+
+  addNode(newNode) {
+    this.list.set(newNode.value, newNode);
+  }
+
+  setTail(newNode) {
+    newNode.prev = this.tail;
+    this.tail.next = newNode;
+    this.tail = newNode;
   }
 } 
