@@ -16,9 +16,7 @@ export default class LinkedList {
   push(value) {
     const newNode = new Node(value, null, null);
     if (!this.head) {
-      this.list.set(value, newNode);
-      this.head = newNode;
-      this.tail = newNode;
+      this.addFirstNode(value);
     } else {
       newNode.prev = this.tail;
       this.tail.next = newNode;
@@ -45,9 +43,7 @@ export default class LinkedList {
   unshift(value) {
     const newNode = new Node(value, null, null);
     if (!this.head) {
-      this.list.set(value, newNode);
-      this.head = newNode;
-      this.tail = newNode;
+      this.addFirstNode(value);
     } else {
       newNode.next = this.head;
       this.head.prev = newNode;
@@ -94,6 +90,13 @@ export default class LinkedList {
         this.list.delete(value);
       }      
     }
+  }
+
+  addFirstNode(value) {
+    const newNode = new Node(value, null, null);
+    this.list.set(value, newNode);
+    this.head = newNode;
+    this.tail = newNode;
   }
 
   emptyList() {
