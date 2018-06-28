@@ -10,7 +10,7 @@ export default class SecretHandshake {
   }
 
   hexToBinary(hexNumber) {
-    return hexNumber === 0x01 ? 1 : 0;
+    return Number.parseInt(hexNumber, 16).toString(2);
   }
 
   commands() {

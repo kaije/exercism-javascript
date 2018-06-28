@@ -6,17 +6,17 @@ describe('Secret Handshake', () => {
     expect(handshake.commands()).toEqual(['wink']);
   });
 
-  xtest('binary 10 (hexadecimal 0x02) is a double blink', () => {
+  test('binary 10 (hexadecimal 0x02) is a double blink', () => {
     const handshake = new SecretHandshake(0x02);
     expect(handshake.commands()).toEqual(['double blink']);
   });
 
-  xtest('binary 100 (hexadecimal 0x04) is close your eyes', () => {
+  test('binary 100 (hexadecimal 0x04) is close your eyes', () => {
     const handshake = new SecretHandshake(0x04);
     expect(handshake.commands()).toEqual(['close your eyes']);
   });
 
-  xtest('binary 1000 (hexadecimal 0x08) is jump', () => {
+  test('binary 1000 (hexadecimal 0x08) is jump', () => {
     const handshake = new SecretHandshake(0x08);
     expect(handshake.commands()).toEqual(['jump']);
   });
