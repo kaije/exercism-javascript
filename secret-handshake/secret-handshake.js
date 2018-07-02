@@ -15,11 +15,9 @@ export default class SecretHandshake {
     ];
     const commandArray = [];
 
-    for (const [mask, str] of handshakeEvents) {
-      // console.log(`number ${this.number.toString(2)} mask ${mask.toString(2)} str ${str}`);
-      // console.log(`this.number & mask = ${(this.number.toString(2) & mask).toString(2)}`);
+    for (const [mask, event] of handshakeEvents) {
       if ((this.number & mask) !== 0) {
-        commandArray.push(str);
+        commandArray.push(event);
       }
     }
 
