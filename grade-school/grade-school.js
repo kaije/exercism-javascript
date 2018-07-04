@@ -13,6 +13,6 @@ export default class School {
   }
 
   grade(grade) {
-    return this.grades[grade].sort();
+    return this.grades[grade] ? this.grades[grade].sort() : [];
   }
 }
