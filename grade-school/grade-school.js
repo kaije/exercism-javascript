@@ -7,7 +7,12 @@ export default class School {
       ? this.grades[grade].push(name)
       : this.grades[grade] = [name];
   }
+  
   roster() {
     return this.grades;
+  }
+
+  grade(grade) {
+    return this.grades[grade].sort();
   }
 }
