@@ -3,7 +3,11 @@ let usedNames = new Set();
 export default class Robot {
   constructor() {
     this.alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    this.setName();
+    this._name = this.generateName();
+  }
+
+  get name() {
+    return this._name;
   }
 
   reset() {
@@ -11,7 +15,7 @@ export default class Robot {
   }
 
   setName() {
-    this.name = this.generateName();
+    this._name = this.generateName();
   }
 
   /* Names must be in the format of two uppercase letters followed by 
