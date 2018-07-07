@@ -70,7 +70,7 @@ describe('Robot', () => {
   });
 
   // This test is optional.
-  xtest('there can be lots of robots with different names each', () => {
+  test('there can be lots of robots with different names each', () => {
     const NUMBER_OF_ROBOTS = 10000;
     const usedNames = new Set();
 
