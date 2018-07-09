@@ -1,4 +1,4 @@
-let usedNames = new Set();
+let usedNames =  new Set();
 
 export default class Robot {
   constructor() {
@@ -25,16 +25,18 @@ export default class Robot {
     }
   }
 
-  /* Names must be in the format of two uppercase letters followed by 
-  three digits, such as RX837 or BC811 */
   generateName() {
-    let letters;
-    let digits;
-    
-    letters = this.alphabet[this.getRandomIntInclusive(0, 25)] + this.alphabet[this.getRandomIntInclusive(0, 25)];
-    digits = this.getRandomIntInclusive(0,999);
-    digits = digits.toString().padStart(3, '0');
-    return `${letters}${digits.toString()}`;
+    return `${this.randomLetter()}${this.randomLetter()}${this.randomDigits()}`;
+  }
+
+  randomLetter() {
+    return this.alphabet[this.getRandomIntInclusive(0, 25)];
+  }
+
+  randomDigits() {
+    return this.getRandomIntInclusive(0, 999)
+    .toString()
+    .padStart(3, 0);
   }
 
   getRandomIntInclusive(min, max) {
