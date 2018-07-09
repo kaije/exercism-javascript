@@ -3,7 +3,6 @@ let usedNames = new Set();
 export default class Robot {
   constructor() {
     this.alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    this.generatedNamesCnt = 0;
     this.setName();
   }
 
@@ -32,7 +31,6 @@ export default class Robot {
     let letters;
     let digits;
     
-    this.generatedNamesCnt++;
     letters = this.alphabet[this.getRandomIntInclusive(0, 25)] + this.alphabet[this.getRandomIntInclusive(0, 25)];
     digits = this.getRandomIntInclusive(0,999);
     digits = digits.toString().padStart(3, '0');
