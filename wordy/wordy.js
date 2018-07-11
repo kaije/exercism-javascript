@@ -4,7 +4,7 @@ class WordProblem {
   }
 
   answer() {
-    let expression = this.question
+    const expression = this.question
       .replace(/what is/i, '')
       .replace(/\?/, '')
       .replace(/plus/gi, '+')
