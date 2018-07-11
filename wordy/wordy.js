@@ -1,10 +1,10 @@
 class WordProblem {
   constructor(question) {
-    this.question = question;
+    this.problem = question;
   }
 
   answer() {
-    const expression = this.convertToExpression(this.question);
+    const expression = this.convertToExpression(this.problem);
     return eval(expression);
   }
 
