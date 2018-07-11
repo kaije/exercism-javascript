@@ -1,10 +1,22 @@
 class WordProblem {
   constructor(question) {
     this.question = question;
+    this.operators = {
+      'plus': '+',
+      'minus': '-'      
+    }
   }
   
   answer() {
-    return 2;
+    let expression = this.question
+      .replace(/what is/i, '')
+      .replace(/\?/, '')
+      .replace(/plus/gi, '+')
+      .replace(/minus/gi, '-')
+      .replace(/multiplied by/gi, '*')
+      .replace(/divided by/gi, '/');
+      
+    return eval(expression);
   }
 }
 
