@@ -4,15 +4,25 @@ class WordProblem {
   }
 
   answer() {
-    const expression = this.question
-      .replace(/what is/i, '')
-      .replace(/\?/, '')
-      .replace(/plus/gi, '+')
-      .replace(/minus/gi, '-')
-      .replace(/multiplied by/gi, '*')
-      .replace(/divided by/gi, '/');
-
+    const expression = this.convertToExpression(this.question);
     return eval(expression);
+  }
+
+  convertToExpression(str) {
+    const conversions = {      
+      'plus': '+',
+      'minus': '-',
+      'multiplied by': '*',
+      'divided by': '/'
+    };
+
+    const regex = new RegExp( Object.keys(conversions)
+      .join('|'), 'gi' );
+
+    return str
+      .replace(regex, match => conversions[match])
+      .replace(/what is/i, '')
+      .replace(/\?/, '');      
   }
 }
 
