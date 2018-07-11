@@ -26,8 +26,7 @@ class WordProblem {
   }
 }
 
-class ArgumentError {
-  constructor() {}
+class ArgumentError extends Error {
 }
 
 export { WordProblem, ArgumentError };
