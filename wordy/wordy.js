@@ -1,32 +1,63 @@
-class WordProblem {
+export class ArgumentError extends Error {
+}
+
+export class WordProblem {
   constructor(question) {
-    this.problem = question;
-  }
-
-  answer() {
-    const expression = this.convertToExpression(this.problem);
-    return eval(expression);
-  }
-
-  convertToExpression(str) {
-    const conversions = {      
+    this.conversions = {
       'plus': '+',
       'minus': '-',
       'multiplied by': '*',
       'divided by': '/'
     };
+  
+    this.operatorRegex = new RegExp(Object.keys(this.conversions)
+      .join('|'), 'gi');
 
-    const regex = new RegExp( Object.keys(conversions)
-      .join('|'), 'gi' );
+    this.problem = question;
+  }
+  answer() {
+    const tokens = this.parseTokens(this.problem);
+    return this.solve(tokens);
+  }
 
+  parseTokens(str) {
+    return str.match(/plus|minus|multiplied by|divided by|-?[0-9]+/gi);
+  }
+
+  solve(tokens) {
+    if (!tokens || tokens.length < 3) {
+      throw new ArgumentError();
+    }
+
+    let answer;
+    let left = tokens[0];
+    
+    if (!this.isOperand(left)) {
+      throw new ArgumentError();
+    };
+
+    for (let i = 1; i < tokens.length; i += 2) {
+      let [operator, right] = tokens.slice(i, i+2);
+      if (!this.isOperator(operator) || !this.isOperand(right)) {
+        throw new ArgumentError();
+      }
+      answer = eval(this.convertToExpression(`${left} ${operator} ${right}`));
+      left = answer;
+    }
+
+    return answer;
+  }
+
+  isOperator(token) {
+    return Object.keys(this.conversions).includes(token);
+  }
+
+  isOperand(token) {
+    return /-?[0-9]+/.test(token);
+  }
+
+  convertToExpression(str) {
     return str
-      .replace(regex, match => conversions[match])
-      .replace(/what is/i, '')
-      .replace(/\?/, '');      
+      .replace(this.operatorRegex, match => this.conversions[match]);     
   }
 }
-
-class ArgumentError extends Error {
-}
-
-export { WordProblem, ArgumentError };
