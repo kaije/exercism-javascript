@@ -10,12 +10,11 @@ export default class School {
       childrenInGrade.sort();
     } else {
       this.schoolRoster[grade] = [name];
-      this.sortGrades();
     }
   }
 
   roster() {
-    return JSON.parse(JSON.stringify(this.schoolRoster)); // return deep clone
+    return this.deepCopy(this.schoolRoster);
   }
 
   grade(grade) {
@@ -24,10 +23,7 @@ export default class School {
       : [];
   }
 
-  sortGrades() {
-    const sortedKeys = Object.keys(this.schoolRoster).sort();
-    const sortedGrades = {};
-    sortedKeys.forEach(key => sortedGrades[key] = this.grade(key));
-    return sortedGrades;
+  deepCopy(obj) {
+    return JSON.parse(JSON.stringify(obj));
   }
 }
