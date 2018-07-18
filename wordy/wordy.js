@@ -10,36 +10,39 @@ export class WordProblem {
       'divided by': '/'
     };
 
-    this.operatorRegex = new RegExp(Object.keys(this.conversions)
-      .join('|'), 'gi');
+    this.operatorsPattern = Object.keys(this.conversions).join('|');
+    this.operandPattern = '-?[0-9]+';
 
     this.problem = question;
   }
 
   answer() {
-    const tokens = WordProblem.parseTokens(this.problem);
+    const tokens = this.parseTokens(this.problem);
     return this.solve(tokens);
   }
 
-  static parseTokens(str) {
-    return str.match(/plus|minus|multiplied by|divided by|-?[0-9]+/gi);
-  }
+  parseTokens(str) {
+    const tokensRegex = new RegExp(`${this.operatorsPattern}|${this.operandPattern}`, 'gi');
+    const tokens = str.match(tokensRegex);
 
-  solve(tokens) {
     if (!tokens || tokens.length < 3) {
       throw new ArgumentError();
     }
 
+    return tokens;
+  }
+
+  solve(tokens) {
     let answer;
     let left = tokens[0];
 
-    if (!WordProblem.isOperand(left)) {
+    if (!this.isOperand(left)) {
       throw new ArgumentError();
     }
 
     for (let i = 1; i < tokens.length; i += 2) {
       const [operator, right] = tokens.slice(i, i + 2);
-      if (!this.isOperator(operator) || !WordProblem.isOperand(right)) {
+      if (!this.isOperator(operator) || !this.isOperand(right)) {
         throw new ArgumentError();
       }
       answer = eval(this.convertToExpression(`${left} ${operator} ${right}`));
@@ -50,15 +53,20 @@ export class WordProblem {
   }
 
   isOperator(token) {
-    return Object.keys(this.conversions).includes(token);
+    return this.operatorsRegex().test(token);
   }
 
-  static isOperand(token) {
-    return /-?[0-9]+/.test(token);
+  isOperand(token) {
+    const operandRegex = new RegExp(`${this.operandPattern}`, 'i');
+    return operandRegex.test(token);
   }
 
   convertToExpression(str) {
     return str
-      .replace(this.operatorRegex, match => this.conversions[match]);
+      .replace(this.operatorsRegex(), match => this.conversions[match]);
+  }
+
+  operatorsRegex() {
+    return new RegExp(`${this.operatorsPattern}`, 'i');
   }
 }
