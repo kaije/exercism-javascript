@@ -1,18 +1,18 @@
+const conversions = {
+  plus: '+',
+  minus: '-',
+  'multiplied by': '*',
+  'divided by': '/'
+};
+
+const operatorsPattern = Object.keys(conversions).join('|');
+const operandPattern = '-?[0-9]+';
+
 export class ArgumentError extends Error {
 }
 
 export class WordProblem {
   constructor(question) {
-    this.conversions = {
-      plus: '+',
-      minus: '-',
-      'multiplied by': '*',
-      'divided by': '/'
-    };
-
-    this.operatorsPattern = Object.keys(this.conversions).join('|');
-    this.operandPattern = '-?[0-9]+';
-
     this.problem = question;
   }
 
@@ -22,7 +22,7 @@ export class WordProblem {
   }
 
   parseTokens(str) {
-    const tokensRegex = new RegExp(`${this.operatorsPattern}|${this.operandPattern}`, 'gi');
+    const tokensRegex = new RegExp(`${operatorsPattern}|${operandPattern}`, 'gi');
     const tokens = str.match(tokensRegex);
 
     if (!tokens || tokens.length < 3) {
@@ -57,16 +57,16 @@ export class WordProblem {
   }
 
   isOperand(token) {
-    const operandRegex = new RegExp(`${this.operandPattern}`, 'i');
+    const operandRegex = new RegExp(`${operandPattern}`, 'i');
     return operandRegex.test(token);
   }
 
   convertToExpression(str) {
     return str
-      .replace(this.operatorsRegex(), match => this.conversions[match]);
+      .replace(this.operatorsRegex(), match => conversions[match]);
   }
 
   operatorsRegex() {
-    return new RegExp(`${this.operatorsPattern}`, 'i');
+    return new RegExp(`${operatorsPattern}`, 'i');
   }
 }
