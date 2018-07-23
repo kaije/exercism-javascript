@@ -10,11 +10,23 @@ export default class List {
     return this;
   }
 
-  concat() {}
+  concat(list) {
+    return this.append(list);
+  }
 
-  filter() {}
+  filter(func) {
+    let filtered = [];
+    for (let i = 0; i < this.values.length; i++) {
+      if (func(this.values[i])) {
+        filtered.push(this.values[i]);
+      }
+    }
+    return new List(filtered);
+  }
 
-  length() {}
+  length() {
+    return this.values.length;
+  }
 
   map(func) {}
 
