@@ -28,11 +28,23 @@ export default class List {
     return this.values.length;
   }
 
-  map(func) {}
+  map(func) {
+    let mapped = [];
+    for (let i = 0; i < this.values.length; i++) {
+        mapped.push(func(this.values[i]));
+    }
+    return new List(mapped);
+  }
 
   foldl(func) {}
 
   foldr(func) {}
 
-  reverse() {}
+  reverse() {
+    let reversed = [];
+    for (let i = 0; i < this.values.length; i++) {
+      reversed.unshift(this.values[i]);
+    }    
+    return new List(reversed);
+  }
 }
