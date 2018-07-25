@@ -36,9 +36,23 @@ export default class List {
     return new List(mapped);
   }
 
-  foldl(func) {}
+  foldl(func, initialVal) {
+    let acc = initialVal;
+    for (let i = 0; i < this.values.length; i++) {
+      acc = func(acc, this.values[i]);
+    }    
+    return acc;
+  }
 
-  foldr(func) {}
+  foldr(func, initialVal) {
+    let acc = initialVal;
+    if (this.values.length > 0) {
+      for (let i = this.values.length-1; i >= 0; i--) {
+        acc = func(acc, this.values[i]);
+      }    
+    }
+    return acc;
+  }
 
   reverse() {
     let reversed = [];

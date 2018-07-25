@@ -79,12 +79,12 @@ describe('returns a list of elements whose values equal the list value transform
 
 
 describe('folds (reduces) the given list from the left with a function', () => {
-  xtest('empty list', () => {
+  test('empty list', () => {
     const list1 = new List();
     expect(list1.foldl((acc, el) => el / acc, 2)).toEqual(2);
   });
 
-  xtest('division of integers', () => {
+  test('division of integers', () => {
     const list1 = new List([1, 2, 3, 4]);
     expect(list1.foldl((acc, el) => el / acc, 24)).toEqual(64);
   });
@@ -92,12 +92,12 @@ describe('folds (reduces) the given list from the left with a function', () => {
 
 
 describe('folds (reduces) the given list from the right with a function', () => {
-  xtest('empty list', () => {
+  test('empty list', () => {
     const list1 = new List();
     expect(list1.foldr((acc, el) => el / acc, 2)).toEqual(2);
   });
 
-  xtest('division of integers', () => {
+  test('division of integers', () => {
     const list1 = new List([1, 2, 3, 4]);
     expect(list1.foldr((acc, el) => el / acc, 24)).toEqual(9);
   });
