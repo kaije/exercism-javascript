@@ -14,10 +14,10 @@ export default class List {
     return this.append(list);
   }
 
-  filter(func) {
+  filter(callback) {
     let filtered = [];
     for (let i = 0; i < this.values.length; i++) {
-      if (func(this.values[i])) {
+      if (callback(this.values[i])) {
         filtered.push(this.values[i]);
       }
     }
@@ -28,27 +28,27 @@ export default class List {
     return this.values.length;
   }
 
-  map(func) {
+  map(callback) {
     let mapped = [];
     for (let i = 0; i < this.values.length; i++) {
-        mapped.push(func(this.values[i]));
+        mapped.push(callback(this.values[i]));
     }
     return new List(mapped);
   }
 
-  foldl(func, initialVal) {
+  foldl(callback, initialVal) {
     let acc = initialVal;
     for (let i = 0; i < this.values.length; i++) {
-      acc = func(acc, this.values[i]);
+      acc = callback(acc, this.values[i]);
     }    
     return acc;
   }
 
-  foldr(func, initialVal) {
+  foldr(callback, initialVal) {
     let acc = initialVal;
     if (this.values.length > 0) {
       for (let i = this.values.length-1; i >= 0; i--) {
-        acc = func(acc, this.values[i]);
+        acc = callback(acc, this.values[i]);
       }    
     }
     return acc;
