@@ -21,7 +21,7 @@ export default function translate(rnaSequence) {
 
   let protein = [];
 
-  let codons = rnaSequence ? rnaSequence.match(/.{1,3}/g) : [];
+  const codons = rnaSequence ? rnaSequence.match(/.{1,3}/g) : [];
 
   for (let i=0; i < codons.length; i++) {
     if (!Object.keys(translations).includes(codons[i])) {
