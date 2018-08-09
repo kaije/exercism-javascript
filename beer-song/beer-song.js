@@ -16,11 +16,25 @@ export default class Beer {
         firstLine = `1 bottle of beer on the wall, 1 bottle of beer.`;
         secondLine = `Take it down and pass it around, no more bottles of beer on the wall.`;
         break;
+      case 2:
+        firstLine = `2 bottles of beer on the wall, 2 bottles of beer.`;
+        secondLine = `Take one down and pass it around, 1 bottle of beer on the wall.`;
+        break;        
       default:
         firstLine = `${bottles} bottles of beer on the wall, ${bottles} bottles of beer.`;
         secondLine =`Take one down and pass it around, ${bottles-1} bottles of beer on the wall.`;
     }
   
     return `${firstLine}\n${secondLine}\n`;
+  }
+
+  static sing(start = 99, finish = 0) {
+    let song = '';
+    let bottles = start;    
+    while (bottles >= finish) {
+      song = `${song ? `${song}\n` : ''}${this.verse(bottles)}`;
+      bottles--; 
+    }
+    return song;
   }
 }
