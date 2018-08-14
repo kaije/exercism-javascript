@@ -38,27 +38,27 @@ describe('words()', () => {
     expect(words.count('¡Hola! ¿Qué tal? Привет!')).toEqual(expectedCounts);
   });
 
-  xtest('counts multiline', () => {
+  test('counts multiline', () => {
     const expectedCounts = { hello: 1, world: 1 };
     expect(words.count('hello\nworld')).toEqual(expectedCounts);
   });
 
-  xtest('counts tabs', () => {
+  test('counts tabs', () => {
     const expectedCounts = { hello: 1, world: 1 };
     expect(words.count('hello\tworld')).toEqual(expectedCounts);
   });
 
-  xtest('counts multiple spaces as one', () => {
+  test('counts multiple spaces as one', () => {
     const expectedCounts = { hello: 1, world: 1 };
     expect(words.count('hello  world')).toEqual(expectedCounts);
   });
 
-  xtest('does not count leading or trailing whitespace', () => {
+  test('does not count leading or trailing whitespace', () => {
     const expectedCounts = { introductory: 1, course: 1 };
     expect(words.count('\t\tIntroductory Course      ')).toEqual(expectedCounts);
   });
 
-  xtest('handles properties that exist on Object’s prototype', () => {
+  test('handles properties that exist on Object’s prototype', () => {
     const expectedCounts = { reserved: 1, words: 1, like: 1, constructor: 1, and: 1, tostring: 1, 'ok?': 1 };
     expect(words.count('reserved words like constructor and toString ok?')).toEqual(expectedCounts);
   });
