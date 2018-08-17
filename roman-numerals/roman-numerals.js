@@ -36,11 +36,46 @@ export default function toRoman(decimal) {
 }
 
 function convertThousands(thousands) {
-  return conversions[1000].repeat(thousands);
+  let romanThousands;
+
+  switch (thousands) {
+    case 1:
+    case 2:
+    case 3:
+      romanThousands = conversions[1000].repeat(thousands);
+      break;
+    default:
+      throw new Error("Cannot convert numbers greater than 3000.");
+  }
+
+  return romanThousands;
 }
 
 function convertHundreds(hundreds) {
-  return conversions[100].repeat(hundreds);
+  let romanHundreds = '';
+
+  switch (hundreds) {
+    case 1:
+    case 2:
+    case 3:
+      romanHundreds = conversions[100].repeat(hundreds);
+      break;
+    case 4:
+      romanHundreds = conversions[100] + conversions[500];
+      break;
+    case 5:
+      romanHundreds = conversions[500];
+      break;
+    case 6:    
+    case 7:
+    case 8:
+      romanHundreds = conversions[500] + conversions[100].repeat(hundreds - 5);
+      break;
+    case 9:
+      romanHundreds = conversions[100] + conversions[1000];
+  }
+
+  return romanHundreds;
 }
 
 function convertTens(tens) {
