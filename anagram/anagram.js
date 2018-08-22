@@ -4,7 +4,7 @@ export default class Anagram {
   }
 
   matches(candidates) {
-    return candidates.filter( candidate => this.isAnagram(candidate));
+    return candidates.filter(candidate => this.isAnagram(candidate));
   }
 
   isAnagram(candidate) {
@@ -16,6 +16,6 @@ export default class Anagram {
   sortLetters(word) {
     return Array.from(word.toLowerCase())
       .sort()
-      .join('');
+      .join("");
   }
 }
