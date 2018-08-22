@@ -8,14 +8,16 @@ export default class Anagram {
   }
 
   isAnagram(candidate) {
-    const wordLetters = this.sortedLetters(this.word);
-    const candidateLetters = this.sortedLetters(candidate);
-
-    return wordLetters.join('') === candidateLetters.join('');
+    if (this.word.toUpperCase() === candidate.toUpperCase()) {
+      return false;
+    } else {
+      return this.sortLetters(this.word) === this.sortLetters(candidate);
+    }
   }
 
-  sortedLetters(word) {
+  sortLetters(word) {
     return Array.from(word.toLowerCase())
-      .sort();
+      .sort()
+      .join('');
   }
 }
