@@ -8,7 +8,7 @@ export default class Anagram {
   }
 
   isAnagram(candidate) {
-    if (this.word.toUpperCase() === candidate.toUpperCase()) {
+    if (this.word.toLowerCase() === candidate.toLowerCase()) {
       return false;
     } else {
       return this.sortLetters(this.word) === this.sortLetters(candidate);
