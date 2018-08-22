@@ -8,11 +8,9 @@ export default class Anagram {
   }
 
   isAnagram(candidate) {
-    if (this.word.toLowerCase() === candidate.toLowerCase()) {
-      return false;
-    } else {
-      return this.sortLetters(this.word) === this.sortLetters(candidate);
-    }
+    return this.word.toLowerCase() === candidate.toLowerCase()
+      ? false
+      : this.sortLetters(this.word) === this.sortLetters(candidate);
   }
 
   sortLetters(word) {
