@@ -46,7 +46,7 @@ describe('PhoneNumber()', () => {
     expect(phone.number()).toEqual(null);
   });
 
-  xtest('invalid with right number of digits but letters mixed in', () => {
+  test('invalid with right number of digits but letters mixed in', () => {
     const phone = new PhoneNumber('1a2b3c4d5e6f7g8h9i0j');
     expect(phone.number()).toEqual(null);
   });

@@ -2,7 +2,7 @@ export default class PhoneNumber {
   constructor(formattedNumber) {
     this.formattedNumber = formattedNumber;
   }
-
+ 
   number() {    
     const cleanedNumber = this.clean(this.formattedNumber);
 
@@ -14,14 +14,19 @@ export default class PhoneNumber {
   }
 
   clean() {    
-    let cleanedNumber = this.removeNonDigits(this.formattedNumber);
+    let cleanedNumber = this.removePunctuation(this.formattedNumber);
+    cleanedNumber = this.removeWhitespace(cleanedNumber);
     cleanedNumber = this.removeCountryCd(cleanedNumber);
-
+    
     return cleanedNumber;
   }
 
-  removeNonDigits(number) {
-    return number.replace(/[^\d]/g,'');
+  removePunctuation(number) {
+    return number.replace(/[^a-zA-Z0-9 ]/g,'');
+  }
+
+  removeWhitespace(number) {
+    return number.replace(/\s/g,'');
   }
   
   removeCountryCd(number) {
@@ -32,6 +37,6 @@ export default class PhoneNumber {
   }
 
   isValid(cleanedNumber) {
-    return cleanedNumber.length === 10;
+    return !cleanedNumber.match(/[a-zA-Z]/g) && cleanedNumber.length === 10;
   }
 }
