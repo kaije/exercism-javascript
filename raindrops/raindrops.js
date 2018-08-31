@@ -1,25 +1,24 @@
 export default class Raindrops {
-  constructor() { }
+  constructor() {     
+    this.sounds = {
+      3: 'Pling',
+      5: 'Plang',
+      7: 'Plong'
+    } 
+  }
 
   convert(num) {
     let str = '';
 
-    if (num >= 3 && num  % 3 === 0) {
-      str = str + 'Pling';
+    for (var factor in this.sounds) {
+      str = this.check(str, num, factor);
     }
+    return str ? str : num.toString();
+  }
 
-    if (num >= 5 && num % 5 === 0) {
-      str = str + 'Plang';
-    }
-
-    if (num >= 7 && num % 7 === 0) {
-      str = str + 'Plong';
-    }
-
-    if (!str) {
-      str = num.toString();
-    }
-
-    return str;
+  check(str, num, factor) {
+    return num >= factor && num % factor === 0
+      ? str + this.sounds[factor]
+      : str;
   }
 }
