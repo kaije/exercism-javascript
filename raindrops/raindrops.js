@@ -4,10 +4,6 @@ export default class Raindrops {
   convert(num) {
     let str = '';
 
-    if (num < 3) {
-      str = num.toString();
-    }
-
     if (num >= 3 && num  % 3 === 0) {
       str = str + 'Pling';
     }
@@ -18,6 +14,10 @@ export default class Raindrops {
 
     if (num >= 7 && num % 7 === 0) {
       str = str + 'Plong';
+    }
+
+    if (!str) {
+      str = num.toString();
     }
 
     return str;

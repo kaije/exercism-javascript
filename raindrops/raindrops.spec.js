@@ -29,9 +29,9 @@ describe('Raindrops', () => {
 
   test('converts 49', () => expect(drops.convert(49)).toEqual('Plong'));
 
-  xtest('converts 52', () => expect(drops.convert(52)).toEqual('52'));
+  test('converts 52', () => expect(drops.convert(52)).toEqual('52'));
 
   test('converts 105', () => expect(drops.convert(105)).toEqual('PlingPlangPlong'));
 
-  xtest('converts 12121', () => expect(drops.convert(12121)).toEqual('12121'));
+  test('converts 12121', () => expect(drops.convert(12121)).toEqual('12121'));
 });
