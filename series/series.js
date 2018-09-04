@@ -5,8 +5,12 @@ export default class Series {
   }
 
   slices(cnt) {
-      let slices = [];
-      return this.num.match(new RegExp(`.{1,${cnt}}`, 'g')).map(slice => this.getDigits(slice));
+      if (cnt > this.num.length) {
+          throw new Error('Slice size is too big.');
+      }
+      return this.num
+        .match(new RegExp(`.{1,${cnt}}`, 'g'))
+        .map(slice => this.getDigits(slice));
   }
 
   getDigits(str) {
