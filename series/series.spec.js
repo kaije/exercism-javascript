@@ -25,27 +25,27 @@ describe('Series', () => {
       .toEqual([[0], [1], [2], [3], [4]]);
   });
 
-  xtest('can slice by 2', () => {
+  test('can slice by 2', () => {
     expect(new Series('98273463').slices(2))
       .toEqual([[9, 8], [8, 2], [2, 7], [7, 3], [3, 4], [4, 6], [6, 3]]);
   });
 
-  xtest('can slice by 3', () => {
+  test('can slice by 3', () => {
     expect(new Series('01234').slices(3))
       .toEqual([[0, 1, 2], [1, 2, 3], [2, 3, 4]]);
   });
 
-  xtest('can slice by 3 with duplicate digits', () => {
+  test('can slice by 3 with duplicate digits', () => {
     expect(new Series('31001').slices(3))
       .toEqual([[3, 1, 0], [1, 0, 0], [0, 0, 1]]);
   });
 
-  xtest('can slice by 4', () => {
+  test('can slice by 4', () => {
     expect(new Series('91274').slices(4))
       .toEqual([[9, 1, 2, 7], [1, 2, 7, 4]]);
   });
 
-  xtest('can slice by 5', () => {
+  test('can slice by 5', () => {
     expect(new Series('81228').slices(5))
       .toEqual([[8, 1, 2, 2, 8]]);
   });

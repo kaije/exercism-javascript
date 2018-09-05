@@ -8,9 +8,13 @@ export default class Series {
       if (cnt > this.num.length) {
           throw new Error('Slice size is too big.');
       }
-      return this.num
-        .match(new RegExp(`.{1,${cnt}}`, 'g'))
-        .map(slice => this.getDigits(slice));
+      let slices = [];      
+      let remaining = this.num;
+      while (remaining && remaining.length >= cnt) {
+        slices.push(remaining.slice(0, cnt));
+        remaining = remaining.slice(1);
+      }
+      return slices.map(slice => this.getDigits(slice));
   }
 
   getDigits(str) {
