@@ -9,17 +9,21 @@ export default class Squares {
   }
 
   squareOfSums() {
-    const total = this.elements.reduce( (accumulator, currentValue) => accumulator + currentValue);
+    const total = this.elements.reduce(
+      (accumulator, currentValue) => accumulator + currentValue
+    );
     return total ** 2;
   }
 
   sumOfSquares() {
-    const squares = this.elements.map( element => element ** 2);
-    return squares.reduce( (accumulator, currentValue) => accumulator + currentValue);
+    const squares = this.elements.map(element => element ** 2);
+    return squares.reduce(
+      (accumulator, currentValue) => accumulator + currentValue
+    );
   }
 
   setElements() {
-    for (let i = 1; i <= this.num ; i++) {
+    for (let i = 1; i <= this.num; i++) {
       this.elements.push(i);
     }
   }
