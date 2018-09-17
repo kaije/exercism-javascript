@@ -13,7 +13,10 @@ export default class RotationalCipher {
     }
 
     return plaintext.split('')
-      .map(letter => cipher[plain.indexOf(letter)])
+      .map(letter => letter.match(/[^a-zA-Z]/) ? letter :
+        letter.match(/[A-Z]/) ? cipher[plain.indexOf(letter.toLowerCase())].toUpperCase() : 
+        cipher[plain.indexOf(letter)]
+      )
       .join('');
   }
 }
