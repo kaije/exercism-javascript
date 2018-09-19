@@ -3,7 +3,7 @@ function steps(num) {
   let stepCnt = 0;
 
   if (n <= 0) {
-    throw new Error('Only positive numbers are allowed');
+    throw new Error("Only positive numbers are allowed");
   }
 
   while (n !== 1) {
