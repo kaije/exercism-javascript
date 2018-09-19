@@ -7,15 +7,7 @@ function steps(num) {
   }
 
   while (n !== 1) {
-
-    // if n is even, divide n by 2
-    if (n % 2 === 0) {
-      n = n / 2;
-    } else {
-      // if n is odd, multiply n by 3 and add 1
-      n = (3 * n) + 1;
-    }
-
+    n = n % 2 === 0 ? n / 2 : 3 * n + 1;
     stepCnt++;
   }
 
