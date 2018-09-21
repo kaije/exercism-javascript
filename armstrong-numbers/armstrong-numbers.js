@@ -4,11 +4,15 @@ function validate(input) {
     .split("")
     .map(digit => parseInt(digit));
   
-  const sum = digits.reduce(
+  const finalSum = digits.reduce(
     (sum, currentVal) => sum + currentVal ** digits.length
   );
-
-  return input === sum;
+  console.log(digits);
+  digits.forEach(element => {
+    console.log(`${element} ** ${digits.length} = ${element ** digits.length}`);
+  });
+  console.log(finalSum);
+  return input === finalSum;
 }
 
 export { validate };
