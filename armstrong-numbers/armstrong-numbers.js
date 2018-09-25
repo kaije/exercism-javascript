@@ -4,10 +4,10 @@ function validate(input) {
     .split("")
     .map(digit => parseInt(digit));
 
-  let raised = digits.map(digit => digit ** digits.length);
+  const finalSum = digits
+    .map(digit => digit ** digits.length)
+    .reduce((sum, current) => sum + current);
 
-  let finalSum = raised.reduce((sum, current) => sum + current);
-  
   return input === finalSum;
 }
 
