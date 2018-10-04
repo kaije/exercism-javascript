@@ -11,29 +11,17 @@ export default class Triangle {
       throw new Error();
     }    
 
-    if (this.isEquilateral()) {      
+    if (this.a === this.b && this.b === this.c) {      
       return 'equilateral';
     }
 
-    if (this.isIsosceles()) {
+    if (this.a === this.b || this.b === this.c || this.c === this.a) {
       return 'isosceles';
     }
 
-    if (this.isScalene()) {
+    if (this.a !== this.b && this.b !== this.c && this.c !== this.a) {
       return 'scalene';
     }
-  }
-
-  isEquilateral() {
-    return this.a === this.b && this.b === this.c;
-  }
-
-  isIsosceles() {
-    return this.a === this.b || this.b === this.c || this.c === this.a;
-  }
-
-  isScalene() {
-    return this.a !== this.b && this.b !== this.c && this.c !== this.a;
   }
 
   isLegal() {
