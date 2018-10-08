@@ -1,10 +1,6 @@
 export default class Triangle {
   constructor(a, b, c) {
-    this.sides = {
-      a: a,
-      b: b,
-      c: c
-    };
+    this.sides = [a, b, c];
   }
 
   kind() {
@@ -12,21 +8,22 @@ export default class Triangle {
       throw new Error();
     }
 
-    return this.sides.a === this.sides.b && this.sides.b === this.sides.c
+    const [a, b, c] = this.sides;
+
+    return a === b && b === c
       ? "equilateral"
-      : this.sides.a === this.sides.b ||
-        this.sides.b === this.sides.c ||
-        this.sides.c === this.sides.a
+      : a === b || b === c || c === a
         ? "isosceles"
         : "scalene";
   }
 
   isLegal() {
+    const [a, b, c] = this.sides;
     return (
-      Object.values(this.sides).every(side => side > 0) &&
-      (this.sides.a + this.sides.b >= this.sides.c &&
-        this.sides.b + this.sides.c >= this.sides.a &&
-        this.sides.c + this.sides.a >= this.sides.b)
+      this.sides.every(side => side > 0) &&
+      a + b >= c &&
+      b + c >= a &&
+      c + a >= b
     );
   }
 }
