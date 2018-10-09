@@ -1,21 +1,22 @@
 function bracketPush(str) {
   const openingBrackets = ["{", "[", "("];
   let brackets = str.split("");
-  let open = [];
+  let openedBrackets = [];
 
-  brackets.forEach(element => {
+  return brackets.every(element => {
     if (openingBrackets.includes(element)) {
-      open.push(element);
-      console.log(open);
+      openedBrackets.push(element);
+      return true;
     } else {
-      let item = open.pop();
-      if (!matched(element, item)) {
+      let open = openedBrackets.length > 0 ? openedBrackets.pop() : undefined;
+      let close = element;
+      if (!open) {
         return false;
+      } else {
+        return matched(open, close);
       }
     }
-  });
-
-  return open.length === 0;
+  }) && openedBrackets.length === 0;
 }
 
 function matched(open, close) {
