@@ -6,23 +6,23 @@ describe('Scrabble', () => {
     expect(score('a')).toEqual(1)
   });
 
-  xtest('uppercase letter', () => { 
+  test('uppercase letter', () => { 
     expect(score('A')).toEqual(1)
   });
 
-  xtest('valuable letter', () => { 
+  test('valuable letter', () => { 
     expect(score('f')).toEqual(4)
   });
 
-  xtest('short word', () => { 
+  test('short word', () => { 
     expect(score('at')).toEqual(2)
   });
 
-  xtest('short, valuable word', () => { 
+  test('short, valuable word', () => { 
     expect(score('zoo')).toEqual(12)
   });
 
-  xtest('medium word', () => { 
+  test('medium word', () => { 
     expect(score('street')).toEqual(6)
   });
 
