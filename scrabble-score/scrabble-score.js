@@ -16,9 +16,9 @@ function getLetterScore(letter) {
     10: ["Q", "Z"]
   };
 
-  return parseInt(
-    Object.entries(letterScores).find(([score, letters]) =>
-      letters.includes(letter.toUpperCase())
-    )[0]
+  const [score, letters] = Object.entries(letterScores).find(
+    ([score, letters]) => letters.includes(letter.toUpperCase())
   );
+
+  return parseInt(score);
 }
