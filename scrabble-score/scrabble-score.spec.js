@@ -26,11 +26,11 @@ describe('Scrabble', () => {
     expect(score('street')).toEqual(6)
   });
 
-  xtest('medium, valuable word', () => { 
+  test('medium, valuable word', () => { 
     expect(score('quirky')).toEqual(22)
   });
 
-  xtest('long, mixed-case word', () => { 
+  test('long, mixed-case word', () => { 
     expect(score('OxyphenButazone')).toEqual(41)
   });
 
@@ -38,11 +38,11 @@ describe('Scrabble', () => {
     expect(score('pinata')).toEqual(8)
   });
 
-  xtest('empty input', () => { 
+  test('empty input', () => { 
     expect(score('')).toEqual(0)
   });
 
-  xtest('entire alphabet available', () => { 
+  test('entire alphabet available', () => { 
     expect(score('abcdefghijklmnopqrstuvwxyz')).toEqual(87)
   });
 
