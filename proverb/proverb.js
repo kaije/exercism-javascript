@@ -7,8 +7,9 @@ export default function proverb(...consequences) {
   while (consequences.length > 1) {
     curr = consequences.shift();
     next = consequences[0];
-    proverb = proverb ? `${proverb}\n` : "";
-    proverb = `${proverb}For want of a ${curr} the ${next} was lost.`;
+    proverb = `${
+      proverb ? `${proverb}\n` : ``
+    }For want of a ${curr} the ${next} was lost.`;
   }
   proverb = `${proverb}\nAnd all for the want of a ${first}.`;
   return proverb;
