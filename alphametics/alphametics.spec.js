@@ -11,7 +11,7 @@ describe('Solve the alphametics puzzle', () => {
     expect(solve(puzzle)).toEqual(expected);
   });
 
-  xtest('solution must have unique value for each letter', () => {
+  test('solution must have unique value for each letter', () => {
     const puzzle = 'A == B';
     expect(solve(puzzle)).toBeNull();
   });

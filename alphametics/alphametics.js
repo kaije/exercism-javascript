@@ -12,6 +12,10 @@ function solve(puzzle) {
   console.log(`rightOperand=${rightOperand}`);
   console.log(`sum=${sum}`);
 
+  if (leftOperand !== rightOperand && leftOperand.length == 1 && rightOperand.length == 1) {
+    return null;
+  }
+
   temp.forEach( ([letter, value]) => mappings[letter] = value );
 
   console.log(mappings);
