@@ -6,7 +6,7 @@ export default class Diamond {
       return `${letter}\n`;
     };
 
-    let letters = ['A','B','C','D','E','F'];
+    const letters = ['A','B','C','D','E','F','G','H'];
     
     let rows = [];
     let index = letters.indexOf(letter);
@@ -22,7 +22,6 @@ export default class Diamond {
       outerSpaces = ' '.repeat(outerSpacesCnt);
       innerSpaces = ' '.repeat(innerSpacesCnt);
       row = `${outerSpaces}${letters[index]}${innerSpaces}${letters[index]}${outerSpaces}`;
-      console.log(row);
       if (rows.length > 0) {
         rows.unshift(row);
       }
@@ -35,7 +34,6 @@ export default class Diamond {
     // add first and last rows (A)
     outerSpaces = ' '.repeat(outerSpacesCnt);
     row = `${outerSpaces}${letters[index]}${outerSpaces}`;
-    console.log(row);
     rows.unshift(row);
     rows.push(row);
 
