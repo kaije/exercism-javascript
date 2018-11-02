@@ -2,19 +2,11 @@ export default class Converter {
   constructor() {}
 
   convert(digits, base, newBase) {
-    let converted = [1];
     let decimal = digits
       .reverse()
-      .map( (digit, index) => {
-        console.log(digit);
-        console.log(base);
-        console.log(index);
-        return digit * base^index;
-        }
-      ).reverse();
+      .map((digit, index) => digit * base ** index)
+      .reduce((sum, digit) => sum + digit);
 
-    console.log(decimal);
-
-    return converted;
+    return newBase === 10 ? [decimal] : [1];
   }
 }
