@@ -4,37 +4,14 @@ export default class Converter {
   convert(digits, inputBase, outputBase) {
     this.validate(digits, inputBase, outputBase);
 
-    if (digits.join('') === '0') {
+    if (digits.join("") === "0") {
       return [0];
     }
 
-    let decimal = digits
-      .reverse()
-      .map((digit, index) => digit * inputBase ** index)
-      .reduce((sum, digit) => sum + digit);
+    let decimal = this.getDecimal(digits, inputBase);
+    let factors = this.getFactors(decimal, outputBase);
 
-    let outputArray = [];
-    let current;
-    let exponent = 0;
-    do {
-      current = outputBase ** exponent;
-      if (decimal >= current) {
-        outputArray.push(current);
-      }
-      exponent++;
-    } while (decimal >= current);
-
-    outputArray.reverse();
-
-    let newVal;
-    let remainder = decimal;
-    let result = outputArray.map(val => {
-      newVal = Math.floor(remainder / val);
-      remainder = remainder % val;
-      return newVal;
-    });
-
-    return result;
+    return this.calculateOutput(decimal, factors);
   }
 
   validate(digits, inputBase, outputBase) {
@@ -77,5 +54,39 @@ export default class Converter {
     ) {
       throw new Error("Input has wrong format");
     }
+  }
+
+  getDecimal(digits, base) {
+    return digits
+      .reverse()
+      .map((digit, index) => digit * base ** index)
+      .reduce((sum, digit) => sum + digit);
+  }
+
+  getFactors(max, base) {
+    let factors = [];
+    let current;
+    let exponent = 0;
+    do {
+      current = base ** exponent;
+      if (max >= current) {
+        factors.push(current);
+      }
+      exponent++;
+    } while (max >= current);
+
+    return factors.reverse();
+  }
+
+  calculateOutput(decimal, factors) {
+    let newVal;
+    let remainder = decimal;
+    let result = factors.map(val => {
+      newVal = Math.floor(remainder / val);
+      remainder = remainder % val;
+      return newVal;
+    });
+
+    return result;
   }
 }
