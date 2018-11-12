@@ -1,6 +1,8 @@
+import BigInt from './lib/big-integer';
+
 export default class Grains {
   constructor() {}
   square(id) {
-    return `${2 ** (id - 1)}`;
+    return `${BigInt(2 ** (id - 1))}`;
   }
 }
