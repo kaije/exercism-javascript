@@ -56,7 +56,7 @@ describe('Grains', () => {
     expect(grains.square(32)).toBe('2147483648');
   });
 
-  xtest('square 64', () => {
+  test('square 64', () => {
     expect(grains.square(64)).toBe('9223372036854775808');
   });
 
