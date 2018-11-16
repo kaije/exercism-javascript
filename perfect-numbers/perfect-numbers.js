@@ -2,6 +2,7 @@ function classify(num) {
   if (num <= 0) {
     throw new Error("Classification is only possible for natural numbers.");
   }
+
   let factors = [];
   let candidate = 1;
   while (candidate < num) {
@@ -10,15 +11,11 @@ function classify(num) {
     }
     candidate++;
   }
+
   let sum =
     factors.length > 0 ? factors.reduce((sum, current) => sum + current) : 0;
-  if (sum === num) {
-    return "perfect";
-  } else if (sum > num) {
-    return "abundant";
-  } else {
-    return "deficient";
-  }
+
+  return sum === num ? "perfect" : sum > num ? "abundant" : "deficient";
 }
 
 export { classify };
