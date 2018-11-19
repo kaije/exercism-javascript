@@ -3,10 +3,6 @@ function classify(num) {
     throw new Error("Classification is only possible for natural numbers.");
   }
 
-  /*   let factors = Array.from(Array(num).keys()).filter(
-    candidate => candidate > 0 && num % candidate === 0
-  ); */
-
   let factors = [];
   let candidate = 1;
   while (candidate < num) {
