@@ -2,32 +2,32 @@ function solve(x, y) {
   if (isNaN(x) || isNaN(y)) {
     return null;
   }
-  const radii = {
-    inner: 1,
-    middle: 5,
-    outer: 10
+
+  const dartboard = {
+    innerCircle: {
+      radius: 1,
+      score: 10
+    },
+    middleCircle: {
+      radius: 5,
+      score: 5
+    },
+    outerCircle: {
+      radius: 10,
+      score: 1
+    }
   };
 
-  const scores = {
-    inner: 10,
-    middle: 5,
-    outer: 1
-  };
+  const distanceFromCentre = Math.sqrt(x ** 2 + y ** 2);
 
-  const distance = Math.sqrt(x ** 2 + y ** 2);
-  console.log(`distance=${distance}`);
-  let score;
-
-  if (distance > radii.outer) {
-    score = 0;
-  } else if (distance > radii.middle) {
-    score = scores.outer;
-  } else if (distance > radii.inner) {
-    score = scores.middle;
-  } else {
-    score = scores.inner;
-  }
-  return score;
+  return distanceFromCentre > dartboard.outerCircle.radius
+    ? 0
+    : distanceFromCentre > dartboard.middleCircle.radius
+    ? dartboard.outerCircle.score
+    : distanceFromCentre > dartboard.innerCircle.radius
+    ? dartboard.middleCircle.score
+    : dartboard.innerCircle.score;
+  
 }
 
 export { solve };
