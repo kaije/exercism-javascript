@@ -3,16 +3,16 @@ function solve(x, y) {
     return null;
   }
 
-  const dartboard = {
-    innerCircle: {
+  const target = {
+    inner: {
       radius: 1,
       score: 10
     },
-    middleCircle: {
+    middle: {
       radius: 5,
       score: 5
     },
-    outerCircle: {
+    outer: {
       radius: 10,
       score: 1
     }
@@ -20,14 +20,13 @@ function solve(x, y) {
 
   const distanceFromCentre = Math.sqrt(x ** 2 + y ** 2);
 
-  return distanceFromCentre > dartboard.outerCircle.radius
-    ? 0
-    : distanceFromCentre > dartboard.middleCircle.radius
-    ? dartboard.outerCircle.score
-    : distanceFromCentre > dartboard.innerCircle.radius
-    ? dartboard.middleCircle.score
-    : dartboard.innerCircle.score;
-  
+  return distanceFromCentre <= target.inner.radius
+    ? target.inner.score
+    : distanceFromCentre <= target.middle.radius
+    ? target.middle.score
+    : distanceFromCentre <= target.outer.radius
+    ? target.outer.score
+    : 0;
 }
 
 export { solve };
