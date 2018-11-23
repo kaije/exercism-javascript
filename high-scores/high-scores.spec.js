@@ -41,7 +41,7 @@ describe('High Scores Test Suite', () => {
     expect(new HighScores(input).top).toEqual([40]);
   });
 
-  xtest('Personal bests from a long list', () => {
+  test('Personal bests from a long list', () => {
     const input = [10, 30, 90, 30, 100, 20, 10, 0, 30, 40, 40, 70, 70];
     expect(new HighScores(input).top).toEqual([100, 90, 70]);
   });

@@ -5,7 +5,7 @@ class HighScores {
     this.highest = Math.max(...this.scores);
     this.top = this.scores
       .map(value => value)
-      .sort()
+      .sort((a, b) => a - b)
       .reverse()
       .slice(0, 3);
   }
