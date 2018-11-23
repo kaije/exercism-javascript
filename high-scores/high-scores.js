@@ -8,6 +8,11 @@ class HighScores {
       .sort((a, b) => a - b)
       .reverse()
       .slice(0, 3);
+    this.report =
+      this.latest === this.highest
+        ? `Your latest score was ${this.latest}. That's your personal best!`
+        : `Your latest score was ${this.latest}. That's ${this.highest -
+            this.latest} short of your personal best!`;
   }
 }
 
