@@ -11,7 +11,7 @@ describe('Transpose', () => {
     expect(transpose(input)).toEqual(expected);
   });
 
-  xtest('two characters in a column', () => {
+  test('two characters in a column', () => {
     const input = ['A', '1'];
     const expected = ['A1'];
     expect(transpose(input)).toEqual(expected);
@@ -29,7 +29,7 @@ describe('Transpose', () => {
     expect(transpose(input)).toEqual(expected);
   });
 
-  xtest('first line longer than second line', () => {
+  test('first line longer than second line', () => {
     const input = ['The fourth line.', 'The fifth line.'];
     const expected = ['TT', 'hh', 'ee', '  ', 'ff', 'oi', 'uf', 'rt', 'th', 'h ', ' l', 'li', 'in', 'ne', 'e.', '.'];
     expect(transpose(input)).toEqual(expected);
