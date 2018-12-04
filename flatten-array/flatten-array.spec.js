@@ -6,7 +6,7 @@ describe('FlattenArray', () => {
     expect(flattener.flatten([[]])).toEqual([]);
   });
 
-  xtest('undefined values are omitted from the final result', () => {
+  test('undefined values are omitted from the final result', () => {
     expect(flattener.flatten([1, 2, undefined])).toEqual([1, 2]);
   });
 
@@ -14,7 +14,7 @@ describe('FlattenArray', () => {
     expect(flattener.flatten([1, 2, null])).toEqual([1, 2]);
   });
 
-  xtest('flattens a 2 level nested list', () => {
+  test('flattens a 2 level nested list', () => {
     expect(flattener.flatten([1, [2, 3, 4], 5])).toEqual([1, 2, 3, 4, 5]);
   });
 
