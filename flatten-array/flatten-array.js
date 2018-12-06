@@ -1,10 +1,19 @@
 export default class Flattener {
   constructor() {}
-  flatten(input) {
+  flatten(arr) {
     let flattened = [];
-    let working = input.map( element => Array.isArray(element) ? element.join('|') : element );
-    working = working.join('|');
-    flattened = working.split('|').map(element => parseInt(element)).filter( element => !isNaN(element));
-    return flattened;
+    this.pushFlattened(flattened, arr);
+
+    return flattened.filter(element => element !== null && !isNaN(element));
+  }
+
+  pushFlattened(arr, element) {
+    if (!Array.isArray(element)) {
+      arr.push(element);
+    } else {
+      element.forEach(item => {
+        this.pushFlattened(arr, item);
+      });
+    }
   }
 }
