@@ -13,19 +13,19 @@ describe('Pig Latin', () => {
     expect(translator.translate('pig')).toEqual('igpay');
   });
 
-  xtest('translates a word beginning with k', () => {
+  test('translates a word beginning with k', () => {
     expect(translator.translate('koala')).toEqual('oalakay');
   });
 
-  xtest('translates a word beginning with ch', () => {
+  test('translates a word beginning with ch', () => {
     expect(translator.translate('chair')).toEqual('airchay');
   });
 
-  xtest('translates a word beginning with qu', () => {
+  test('translates a word beginning with qu', () => {
     expect(translator.translate('queen')).toEqual('eenquay');
   });
 
-  xtest('translates a word with a consonant preceding qu', () => {
+  test('translates a word with a consonant preceding qu', () => {
     expect(translator.translate('square')).toEqual('aresquay');
   });
 
