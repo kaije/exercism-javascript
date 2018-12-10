@@ -5,6 +5,8 @@ let translator = {
     let firstLetter = word.charAt(0);
     if (vowels.includes(firstLetter)) {
       return `${word}ay`;
+    } else {
+      return `${word.slice(1)}${firstLetter}ay`
     };
   }
 }
