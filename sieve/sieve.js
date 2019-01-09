@@ -12,17 +12,15 @@ class Sieve {
       val => val > 1
     );
 
-    let primeNumbers = [];
     let p = 2;
 
     while (p <= limit) {
-      primeNumbers.push(p);
       candidates = candidates.filter(
-        candidate => candidate > p && candidate % p !== 0
+        candidate => candidate <= p || candidate % p !== 0
       );
       p = candidates.find(candidate => candidate > p);
     }
-    return primeNumbers;
+    return candidates;
   }
 }
 
