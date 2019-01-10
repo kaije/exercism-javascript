@@ -5,25 +5,25 @@ describe('strain', () => {
     expect(strain.keep([], e => e < 10)).toEqual([]);
   });
 
-  xtest('keeps everything ', () => {
+  test('keeps everything ', () => {
     expect(strain.keep([1, 2, 3], e => e < 10)).toEqual([1, 2, 3]);
   });
 
-  xtest('keeps first and last', () => {
+  test('keeps first and last', () => {
     expect(strain.keep([1, 2, 3], e => e % 2 === 1)).toEqual([1, 3]);
   });
 
-  xtest('keeps neither first nor last', () => {
+  test('keeps neither first nor last', () => {
     expect(strain.keep([1, 2, 3, 4, 5], e => e % 2 === 0)).toEqual([2, 4]);
   });
 
-  xtest('keeps strings', () => {
+  test('keeps strings', () => {
     const words = 'apple zebra banana zombies cherimoya zelot'.split(' ');
     const result = strain.keep(words, word => word.indexOf('z') === 0);
     expect(result).toEqual('zebra zombies zelot'.split(' '));
   });
 
-  xtest('keeps arrays', () => {
+  test('keeps arrays', () => {
     const rows = [
       [1, 2, 3],
       [5, 5, 5],

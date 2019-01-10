@@ -1,9 +1,7 @@
 class Strain {
-  constructor() {
-
-  }
-  keep( arr, f) {
-    return [];
+  constructor() {}
+  keep(arr, f) {
+    return arr.filter(f);
   }
 }
 
