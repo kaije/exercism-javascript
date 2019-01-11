@@ -37,30 +37,30 @@ describe('strain', () => {
     expect(result).toEqual([[5, 5, 5], [5, 1, 2], [1, 5, 2], [1, 2, 5]]);
   });
 
-  xtest('empty discard', () => {
+  test('empty discard', () => {
     expect(strain.discard([], e => e < 10)).toEqual([]);
   });
 
-  xtest('discards nothing', () => {
+  test('discards nothing', () => {
     expect(strain.discard([1, 2, 3], e => e > 10)).toEqual([1, 2, 3]);
   });
 
-  xtest('discards first and last', () => {
+  test('discards first and last', () => {
     expect(strain.discard([1, 2, 3], e => e % 2 === 1)).toEqual([2]);
   });
 
-  xtest('discards neither first nor last', () => {
+  test('discards neither first nor last', () => {
     const result = strain.discard([1, 2, 3, 4, 5], e => e % 2 === 0);
     expect(result).toEqual([1, 3, 5]);
   });
 
-  xtest('discards strings', () => {
+  test('discards strings', () => {
     const words = 'apple zebra banana zombies cherimoya zelot'.split(' ');
     const result = strain.discard(words, word => word.indexOf('z') === 0);
     expect(result).toEqual('apple banana cherimoya'.split(' '));
   });
 
-  xtest('discards arrays', () => {
+  test('discards arrays', () => {
     const rows = [
       [1, 2, 3],
       [5, 5, 5],
