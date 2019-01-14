@@ -10,4 +10,7 @@ export default class Triplet {
   product() {
     return this.a * this.b * this.c;
   }
+  isPythagorean() {
+    return this.a ** 2 + this.b ** 2 === this.c ** 2;
+  }
 }
