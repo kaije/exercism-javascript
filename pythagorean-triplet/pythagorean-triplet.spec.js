@@ -23,7 +23,7 @@ describe('Triplet', () => {
     expect(products).toEqual([60, 480]);
   });
 
-  xtest('can make triplets 11 through 20', () => {
+  test('can make triplets 11 through 20', () => {
     const triplets = Triplet.where({ minFactor: 11, maxFactor: 20 });
     const products = triplets.sort().map(triplet => triplet.product());
     expect(products).toEqual([3840]);
