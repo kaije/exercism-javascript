@@ -14,11 +14,9 @@ export default class Triplet {
     return this.a ** 2 + this.b ** 2 === this.c ** 2;
   }
   static where(props) {
-    let maxFactor = props.maxFactor;
-    let minFactor = props.minFactor ? props.minFactor : 1;
-    let sum = props.sum ? props.sum : null;
-    
+    let { maxFactor, minFactor = 1, sum } = props;
     let triplets = [];
+
     for (let a = minFactor; a <= maxFactor - 2; a++) {
       for (let b = minFactor + 1; b <= maxFactor - 1; b++) {
         for (let c = minFactor + 2; c <= maxFactor; c++) {
