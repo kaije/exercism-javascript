@@ -16,12 +16,20 @@ export default class Triplet {
   static where(props) {
     let maxFactor = props.maxFactor;
     let minFactor = props.minFactor ? props.minFactor : 1;
+    let sum = props.sum ? props.sum : null;
+    
     let triplets = [];
     for (let a = minFactor; a <= maxFactor - 2; a++) {
       for (let b = minFactor + 1; b <= maxFactor - 1; b++) {
         for (let c = minFactor + 2; c <= maxFactor; c++) {
           if (a < b && b < c && a * a + b * b === c * c) {
-            triplets.push(new Triplet(a, b, c));
+            if (sum) {
+              if (sum === a + b + c) {
+                triplets.push(new Triplet(a, b, c));
+              }
+            } else {
+              triplets.push(new Triplet(a, b, c));
+            }
           }
         }
       }
