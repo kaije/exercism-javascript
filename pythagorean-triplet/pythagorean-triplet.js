@@ -21,12 +21,9 @@ export default class Triplet {
       for (let b = minFactor + 1; b <= maxFactor - 1; b++) {
         for (let c = minFactor + 2; c <= maxFactor; c++) {
           if (a < b && b < c && a * a + b * b === c * c) {
-            if (sum) {
-              if (sum === a + b + c) {
-                triplets.push(new Triplet(a, b, c));
-              }
-            } else {
-              triplets.push(new Triplet(a, b, c));
+            let triplet = new Triplet(a, b, c);
+            if (!sum || sum === triplet.sum()) {
+              triplets.push(triplet);
             }
           }
         }
