@@ -17,14 +17,13 @@ export default class Triplet {
     let { maxFactor, minFactor = 3, sum } = constraints;
     let triplets = [];
 
-    for (let a = minFactor; a <= maxFactor - 2; a++) {
-      for (let b = minFactor + 1; b <= maxFactor - 1; b++) {
-        for (let c = minFactor + 2; c <= maxFactor; c++) {
-          if (a < b && b < c && a * a + b * b === c * c) {
-            let triplet = new Triplet(a, b, c);
-            if (!sum || sum === triplet.sum()) {
-              triplets.push(triplet);
-            }
+    for (let b = minFactor + 1; b < maxFactor; b++) {
+      for (let c = minFactor + 2; c <= maxFactor; c++) {
+        let a = Math.sqrt(c * c - b * b);
+        if (Number.isInteger(a) && a >= minFactor && a < b && b < c) {
+          let triplet = new Triplet(a, b, c);
+          if (!sum || sum === triplet.sum()) {
+            triplets.push(triplet);
           }
         }
       }

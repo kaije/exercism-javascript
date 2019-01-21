@@ -31,7 +31,7 @@ describe('Triplet', () => {
 
   test('can filter on sum', () => {
     const triplets = Triplet.where({ sum: 180, maxFactor: 100 });
-    const products = triplets.sort().map(triplet => triplet.product());
+    const products = triplets.sort().map(triplet => triplet.product()).sort();
     expect(products).toEqual([118080, 168480, 202500]);
   });
 });
