@@ -14,7 +14,7 @@ export default class Triplet {
     return this.a ** 2 + this.b ** 2 === this.c ** 2;
   }
   static where(constraints) {
-    let { maxFactor, minFactor = 1, sum } = constraints;
+    let { maxFactor, minFactor = 3, sum } = constraints;
     let triplets = [];
 
     for (let a = minFactor; a <= maxFactor - 2; a++) {
