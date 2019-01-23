@@ -6,37 +6,37 @@ describe('Allergies', () => {
     expect(allergies.list()).toEqual([]);
   });
 
-  xtest('allergies to eggs', () => {
+  test('allergies to eggs', () => {
     const allergies = new Allergies(1);
     expect(allergies.list()).toEqual(['eggs']);
   });
 
-  xtest('allergies to peanuts', () => {
+  test('allergies to peanuts', () => {
     const allergies = new Allergies(2);
     expect(allergies.list()).toEqual(['peanuts']);
   });
 
-  xtest('allergies to strawberries', () => {
+  test('allergies to strawberries', () => {
     const allergies = new Allergies(8);
     expect(allergies.list()).toEqual(['strawberries']);
   });
 
-  xtest('allergies to eggs and peanuts', () => {
+  test('allergies to eggs and peanuts', () => {
     const allergies = new Allergies(3);
     expect(allergies.list()).toEqual(['eggs', 'peanuts']);
   });
 
-  xtest('allergies to more than eggs but not peanuts', () => {
+  test('allergies to more than eggs but not peanuts', () => {
     const allergies = new Allergies(5);
     expect(allergies.list()).toEqual(['eggs', 'shellfish']);
   });
 
-  xtest('allergic to lots of stuff', () => {
+  test('allergic to lots of stuff', () => {
     const allergies = new Allergies(248);
     expect(allergies.list()).toEqual(['strawberries', 'tomatoes', 'chocolate', 'pollen', 'cats']);
   });
 
-  xtest('allergic to everything', () => {
+  test('allergic to everything', () => {
     const allergies = new Allergies(255);
     expect(allergies.list()).toEqual(['eggs', 'peanuts', 'shellfish', 'strawberries', 'tomatoes', 'chocolate', 'pollen', 'cats']);
   });
