@@ -26,4 +26,7 @@ export default class Allergies {
 
     return allergies;
   }
+  allergicTo(item) {
+    return this.list().includes(item);
+  }
 }
