@@ -7,8 +7,12 @@ class NucleotideCounts {
       G: 0,
       T: 0
     };
-    strand.split('').forEach(nucleotide => {
-      nucleotides[nucleotide]++;
+    strand.split("").forEach(nucleotide => {
+      if (nucleotides[nucleotide] === undefined) {
+        throw new Error("Invalid nucleotide in strand");
+      } else {
+        nucleotides[nucleotide]++;
+      }
     });
     return Object.values(nucleotides).join(" ");
   }
