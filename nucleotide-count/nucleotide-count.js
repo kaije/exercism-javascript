@@ -7,6 +7,9 @@ class NucleotideCounts {
       G: 0,
       T: 0
     };
+    strand.split('').forEach(nucleotide => {
+      nucleotides[nucleotide]++;
+    });
     return Object.values(nucleotides).join(" ");
   }
 }
