@@ -7,11 +7,15 @@ class NucleotideCounts {
       G: 0,
       T: 0
     };
-    strand.split("").forEach(nucleotide => {
-      if (nucleotides[nucleotide] === undefined) {
-        throw new Error("Invalid nucleotide in strand");
-      } else {
-        nucleotides[nucleotide]++;
+    let invalid = new RegExp(`[^${Object.keys(nucleotides).join("")}]`);
+    if (strand.match(invalid)) {
+      throw new Error("Invalid nucleotide in strand");
+    }
+    Object.keys(nucleotides).forEach(nucleotide => {
+      let pattern = new RegExp(nucleotide, "g");
+      let matched = strand.match(pattern);
+      if (matched) {
+        nucleotides[nucleotide] = matched.length;
       }
     });
     return Object.values(nucleotides).join(" ");
