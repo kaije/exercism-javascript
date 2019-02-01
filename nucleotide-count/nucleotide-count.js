@@ -7,13 +7,12 @@ class NucleotideCounts {
       G: 0,
       T: 0
     };
-    let invalid = new RegExp(`[^${Object.keys(nucleotides).join("")}]`);
+    const invalid = new RegExp(`[^${Object.keys(nucleotides).join("")}]`);
     if (strand.match(invalid)) {
       throw new Error("Invalid nucleotide in strand");
     }
     Object.keys(nucleotides).forEach(nucleotide => {
-      let pattern = new RegExp(nucleotide, "g");
-      let matched = strand.match(pattern);
+      const matched = strand.match(new RegExp(nucleotide, "g"));
       if (matched) {
         nucleotides[nucleotide] = matched.length;
       }
