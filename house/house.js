@@ -57,6 +57,17 @@ class House {
     lyrics.push(`${line} ${elements[key].noun} ${elements[key].postmodifier}`);
     return lyrics;
   }
+  static verses(startVerse, endVerse) {
+    let lyrics = [];
+    let key = startVerse;
+    while (key <= endVerse) {
+      let verseLyrics = this.verse(key);
+      lyrics.push(...verseLyrics);
+      key < endVerse ? lyrics.push('') : null;
+      key++;
+    }
+    return lyrics;
+  }
 }
 
 export { House };
