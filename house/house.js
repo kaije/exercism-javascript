@@ -1,41 +1,48 @@
-const elements = {
-  1: { noun: "the house", postmodifier: "that Jack built." },
-  2: { noun: "the malt", postmodifier: "that lay in" },
-  3: { noun: "the rat", postmodifier: "that ate" },
-  4: { noun: "the cat", postmodifier: "that killed" },
-  5: { noun: "the dog", postmodifier: "that worried" },
+const nounPhrases = {
+  1: { determiner: "the", noun: "house", postmodifier: "that Jack built" },
+  2: { determiner: "the", noun: "malt", postmodifier: "that lay in" },
+  3: { determiner: "the", noun: "rat", postmodifier: "that ate" },
+  4: { determiner: "the", noun: "cat", postmodifier: "that killed" },
+  5: { determiner: "the", noun: "dog", postmodifier: "that worried" },
   6: {
-    noun: "the cow",
+    determiner: "the",
+    noun: "cow",
     description: "with the crumpled horn",
     postmodifier: "that tossed"
   },
   7: {
-    noun: "the maiden",
+    determiner: "the",
+    noun: "maiden",
     description: "all forlorn",
     postmodifier: "that milked"
   },
   8: {
-    noun: "the man",
+    determiner: "the",
+    noun: "man",
     description: "all tattered and torn",
     postmodifier: "that kissed"
   },
   9: {
-    noun: "the priest",
+    determiner: "the",
+    noun: "priest",
     description: "all shaven and shorn",
     postmodifier: "that married"
   },
   10: {
-    noun: "the rooster",
+    determiner: "the",
+    noun: "rooster",
     description: "that crowed in the morn",
     postmodifier: "that woke"
   },
   11: {
-    noun: "the farmer",
+    determiner: "the",
+    noun: "farmer",
     description: "sowing his corn",
     postmodifier: "that kept"
   },
   12: {
-    noun: "the horse and the hound and the horn",
+    determiner: "the",
+    noun: "horse and the hound and the horn",
     postmodifier: "that belonged to"
   }
 };
@@ -46,15 +53,18 @@ class House {
     let key = startVerse;
     let line = "This is";
     while (key > 1) {
-      line = `${line} ${elements[key].noun}`;
-      line = elements[key].description
-        ? `${line} ${elements[key].description}`
-        : line;
+      let phrase = nounPhrases[key];
+      line = `${line} ${phrase.determiner} ${phrase.noun}`;
+      line = phrase.description ? `${line} ${phrase.description}` : line;
       lyrics.push(line);
-      line = elements[key].postmodifier;
+      line = phrase.postmodifier;
       key--;
     }
-    lyrics.push(`${line} ${elements[key].noun} ${elements[key].postmodifier}`);
+    lyrics.push(
+      `${line} ${nounPhrases[key].determiner} ${nounPhrases[key].noun} ${
+        nounPhrases[key].postmodifier
+      }.`
+    );
     return lyrics;
   }
   static verses(startVerse, endVerse) {
@@ -63,7 +73,7 @@ class House {
     while (key <= endVerse) {
       let verseLyrics = this.verse(key);
       lyrics.push(...verseLyrics);
-      key < endVerse ? lyrics.push('') : null;
+      key < endVerse ? lyrics.push("") : null;
       key++;
     }
     return lyrics;
