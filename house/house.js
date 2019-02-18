@@ -41,12 +41,12 @@ const nounPhrases = {
 };
 
 class House {
+  
   static verse(startVerse) {
-    let key = startVerse;
     let lyrics = [];
     let line = "This is";
-    while (key > 1) {
-      let phrase = nounPhrases[key--];
+    for (let key = startVerse; key > 1; key--) {
+      let phrase = nounPhrases[key];
       line = `${line} the ${phrase.head}${
         phrase.description ? " " + phrase.description : ""
       }`;
@@ -54,18 +54,16 @@ class House {
       line = phrase.postmodifier;
     }
     lyrics.push(
-      `${line} the ${nounPhrases[key].head} ${nounPhrases[key].postmodifier}.`
+      `${line} the ${nounPhrases[1].head} ${nounPhrases[1].postmodifier}.`
     );
     return lyrics;
   }
+
   static verses(startVerse, endVerse) {
     let lyrics = [];
-    let key = startVerse;
-    while (key <= endVerse) {
-      let verseLyrics = this.verse(key);
-      lyrics.push(...verseLyrics);
+    for (let key = startVerse; key <= endVerse; key++) {
+      lyrics.push(...this.verse(key));
       key < endVerse ? lyrics.push("") : null;
-      key++;
     }
     return lyrics;
   }
