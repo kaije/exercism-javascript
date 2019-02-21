@@ -15,31 +15,31 @@ describe('diffie-hellman', () => {
   test('throws an error if the constructor arguments are out of range', () => {
     expect(() => {
       new DiffieHellman(0, 9999);
-    }).toThrow();
+    }).toThrow("Constructor arguments out of range");
   });
 
   test('throws an error if the constructor arguments are not prime', () => {
     expect(() => {
       new DiffieHellman(10, 13);
-    }).toThrow();
+    }).toThrow("Constructor arguments must be prime");
   });
 
-  xtest('throws an error if private key is negative', () => {
+  test('throws an error if private key is negative', () => {
     expect(() => {
       diffieHellman.getPublicKeyFromPrivateKey(-1);
-    }).toThrow();
+    }).toThrow("Private key is negative");
   });
 
-  xtest('throws an error if private key is zero', () => {
+  test('throws an error if private key is zero', () => {
     expect(() => {
       diffieHellman.getPublicKeyFromPrivateKey(0);
-    }).toThrow();
+    }).toThrow("Private key is zero");
   });
 
-  xtest('throws an error if private key is one', () => {
+  test('throws an error if private key is one', () => {
     expect(() => {
       diffieHellman.getPublicKeyFromPrivateKey(1);
-    }).toThrow();
+    }).toThrow("Private key is one");
   });
 
   xtest('throws an error if private key equals the modulus parameter p', () => {
