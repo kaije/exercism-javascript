@@ -42,27 +42,27 @@ describe('diffie-hellman', () => {
     }).toThrow("Private key is one");
   });
 
-  xtest('throws an error if private key equals the modulus parameter p', () => {
+  test('throws an error if private key equals the modulus parameter p', () => {
     expect(() => {
       diffieHellman.getPublicKeyFromPrivateKey(p);
     }).toThrow();
   });
 
-  xtest('throws an error if private key is greater than the modulus parameter p', () => {
+  test('throws an error if private key is greater than the modulus parameter p', () => {
     expect(() => {
       diffieHellman.getPublicKeyFromPrivateKey(p + 1);
     }).toThrow();
   });
 
-  xtest('when given a private key, returns the correct public one', () => {
+  test('when given a private key, returns the correct public one', () => {
     expect(diffieHellman.getPublicKeyFromPrivateKey(alicePrivateKey)).toEqual(alicePublicKey);
   });
 
-  xtest('when given a different private key, returns the correct public one', () => {
+  test('when given a different private key, returns the correct public one', () => {
     expect(diffieHellman.getPublicKeyFromPrivateKey(bobPrivateKey)).toEqual(bobPublicKey);
   });
 
-  xtest('can generate a shared secret from our private key and their public key', () => {
+  test('can generate a shared secret from our private key and their public key', () => {
     const sharedSecret = 2;
 
     expect(diffieHellman.getSharedSecret(alicePrivateKey, bobPublicKey))
