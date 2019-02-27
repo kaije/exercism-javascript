@@ -27,19 +27,19 @@ describe('diffie-hellman', () => {
   test('throws an error if private key is negative', () => {
     expect(() => {
       diffieHellman.getPublicKeyFromPrivateKey(-1);
-    }).toThrow("Private key is negative");
+    }).toThrow("Private key cannot be negative");
   });
 
   test('throws an error if private key is zero', () => {
     expect(() => {
       diffieHellman.getPublicKeyFromPrivateKey(0);
-    }).toThrow("Private key is zero");
+    }).toThrow("Private key cannot be 0");
   });
 
   test('throws an error if private key is one', () => {
     expect(() => {
       diffieHellman.getPublicKeyFromPrivateKey(1);
-    }).toThrow("Private key is one");
+    }).toThrow("Private key cannot be 1");
   });
 
   test('throws an error if private key equals the modulus parameter p', () => {
