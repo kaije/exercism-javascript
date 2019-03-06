@@ -3,7 +3,16 @@ class TwelveDays {
     this.gifts = {
       1: { day: "first", gift: "a Partridge in a Pear Tree" },
       2: { day: "second", gift: "two Turtle Doves" },
-      3: { day: "third", gift: "three French Hens" }
+      3: { day: "third", gift: "three French Hens" },
+      4: { day: "fourth", gift: "four Calling Birds" },
+      5: { day: "fifth", gift: "five Gold Rings" },
+      6: { day: "sixth", gift: "six Geese-a-Laying" },
+      7: { day: "seventh", gift: "seven Swans-a-Swimming" },
+      8: { day: "eighth", gift: "eight Maids-a-Milking" },
+      9: { day: "ninth", gift: "nine Ladies Dancing" },
+      10: { day: "tenth", gift: "ten Lords-a-Leaping" },
+      11: { day: "eleventh", gift: "eleven Pipers Piping" },
+      12: { day: "twelfth", gift: "twelve Drummers Drumming" }
     };
   }
   verse(id) {
