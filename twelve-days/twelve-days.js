@@ -22,7 +22,7 @@ class TwelveDays {
     } else {
       let curr = start;
       while (curr <= end) {
-        lyrics = this.getVerse(curr);
+        lyrics = lyrics ? `${lyrics}\n${this.getVerse(curr)}` : this.getVerse(curr);
         curr++;
       }
     }
