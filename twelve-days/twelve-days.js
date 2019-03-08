@@ -15,7 +15,20 @@ class TwelveDays {
       12: { day: "twelfth", gift: "twelve Drummers Drumming" }
     };
   }
-  verse(id) {
+  verse(start, end) {
+    let lyrics;
+    if (!end) {
+      lyrics = this.getVerse(start);
+    } else {
+      let curr = start;
+      while (curr <= end) {
+        lyrics = this.getVerse(curr);
+        curr++;
+      }
+    }
+    return lyrics;
+  }
+  getVerse(id) {
     return `On the ${
       this.gifts[id].day
     } day of Christmas my true love gave to me: ${this.getList(id)}.\n`;
