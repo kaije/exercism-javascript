@@ -15,6 +15,9 @@ class TwelveDays {
       12: { day: "twelfth", gift: "twelve Drummers Drumming" }
     };
   }
+  sing() {
+    return this.verse(1, 12);
+  }
   verse(start, end) {
     let lyrics;
     if (!end) {
@@ -22,7 +25,9 @@ class TwelveDays {
     } else {
       let curr = start;
       while (curr <= end) {
-        lyrics = lyrics ? `${lyrics}\n${this.getVerse(curr)}` : this.getVerse(curr);
+        lyrics = lyrics
+          ? `${lyrics}\n${this.getVerse(curr)}`
+          : this.getVerse(curr);
         curr++;
       }
     }
