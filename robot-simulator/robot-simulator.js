@@ -10,6 +10,24 @@ class Robot {
       this.bearing = currentDirection;
     }
   }
+  turnRight() {
+    switch (this.bearing) {
+      case "north":
+        this.orient("east");
+        break;
+      case "east":
+        this.orient("south");
+        break;
+      case "south":
+        this.orient("west");
+        break;
+      case "west":
+        this.orient("north");
+        break;
+      default:
+        null;
+    }
+  }
 }
 
 class InvalidInputError extends Error {}
