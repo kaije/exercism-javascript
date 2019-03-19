@@ -28,6 +28,24 @@ class Robot {
         null;
     }
   }
+  turnLeft() {
+    switch (this.bearing) {
+      case "north":
+        this.orient("west");
+        break;
+      case "west":
+        this.orient("south");
+        break;      
+      case "south":
+        this.orient("east");
+        break;      
+      case "east": 
+        this.orient("north");
+        break;      
+      default:
+        null;
+    }
+  }
 }
 
 class InvalidInputError extends Error {}
