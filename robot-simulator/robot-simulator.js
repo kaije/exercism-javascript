@@ -2,6 +2,10 @@ class Robot {
   constructor() {
     this.directions = ["east", "west", "north", "south"];
     this.bearing = null;
+    this.coordinates = [];
+  }
+  at(x,y) {
+    this.coordinates = [x,y];
   }
   orient(currentDirection) {
     if (!this.directions.includes(currentDirection)) {
