@@ -2,10 +2,10 @@ class Robot {
   constructor() {
     this.directions = ["east", "west", "north", "south"];
     this.bearing = null;
-    this.coordinates = [];
+    this.coordinates = [0, 0];
   }
-  at(x,y) {
-    this.coordinates = [x,y];
+  at(x, y) {
+    this.coordinates = [x, y];
   }
   orient(currentDirection) {
     if (!this.directions.includes(currentDirection)) {
@@ -39,13 +39,31 @@ class Robot {
         break;
       case "west":
         this.orient("south");
-        break;      
+        break;
       case "south":
         this.orient("east");
-        break;      
-      case "east": 
+        break;
+      case "east":
         this.orient("north");
-        break;      
+        break;
+      default:
+        null;
+    }
+  }
+  advance() {
+    switch (this.bearing) {
+      case "north":
+        this.coordinates[1]++;
+        break;
+      case "east":
+        this.coordinates[0]++;
+        break;
+      case "south":
+        this.coordinates[1]--;
+        break;
+      case "west":
+        this.coordinates[0]--;
+        break;
       default:
         null;
     }
