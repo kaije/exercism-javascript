@@ -103,15 +103,15 @@ describe('Robot', () => {
     expect(robot.coordinates).toEqual([-1, 0]);
   });
 
-  xtest('instructions for turning left', () => {
+  test('instructions for turning left', () => {
     expect(Robot.instructions('L')).toEqual(['turnLeft']);
   });
 
-  xtest('instructions for turning right', () => {
+  test('instructions for turning right', () => {
     expect(Robot.instructions('R')).toEqual(['turnRight']);
   });
 
-  xtest('instructions for advancing', () => {
+  test('instructions for advancing', () => {
     expect(Robot.instructions('A')).toEqual(['advance']);
   });
 

@@ -68,6 +68,14 @@ class Robot {
         null;
     }
   }
+  static instructions(instructions) {
+    let translations = {
+      L: 'turnLeft',
+      R: 'turnRight',
+      A: 'advance'
+    }    
+    return instructions.split().map( instruction => translations[instruction]);
+  }
 }
 
 class InvalidInputError extends Error {}
