@@ -5,23 +5,23 @@ class Robot {
     this.coordinates = [0, 0];
   }
   place(config) {
-    var {x, y, direction} = config;
+    var { x, y, direction } = config;
     this.orient(direction);
-    this.at(x,y);
+    this.at(x, y);
   }
   evaluate(instructions) {
     let actions = Robot.instructions(instructions);
-    actions.forEach( action => this.doAction(action));
+    actions.forEach(action => this.doAction(action));
   }
   doAction(action) {
-    switch(action) {
-      case 'turnLeft':
+    switch (action) {
+      case "turnLeft":
         this.turnLeft();
         break;
-      case 'turnRight':
+      case "turnRight":
         this.turnRight();
         break;
-      case 'advance':
+      case "advance":
         this.advance();
         break;
       default:
@@ -94,11 +94,11 @@ class Robot {
   }
   static instructions(instructions) {
     let translations = {
-      L: 'turnLeft',
-      R: 'turnRight',
-      A: 'advance'
-    }    
-    return instructions.split('').map( instruction => translations[instruction]);
+      L: "turnLeft",
+      R: "turnRight",
+      A: "advance"
+    };
+    return instructions.split("").map(instruction => translations[instruction]);
   }
 }
 
