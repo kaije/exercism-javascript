@@ -4,6 +4,30 @@ class Robot {
     this.bearing = null;
     this.coordinates = [0, 0];
   }
+  place(config) {
+    var {x, y, direction} = config;
+    this.orient(direction);
+    this.at(x,y);
+  }
+  evaluate(instructions) {
+    let actions = Robot.instructions(instructions);
+    actions.forEach( action => this.doAction(action));
+  }
+  doAction(action) {
+    switch(action) {
+      case 'turnLeft':
+        this.turnLeft();
+        break;
+      case 'turnRight':
+        this.turnRight();
+        break;
+      case 'advance':
+        this.advance();
+        break;
+      default:
+        null;
+    }
+  }
   at(x, y) {
     this.coordinates = [x, y];
   }
@@ -74,7 +98,7 @@ class Robot {
       R: 'turnRight',
       A: 'advance'
     }    
-    return instructions.split().map( instruction => translations[instruction]);
+    return instructions.split('').map( instruction => translations[instruction]);
   }
 }
 

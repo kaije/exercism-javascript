@@ -115,19 +115,19 @@ describe('Robot', () => {
     expect(Robot.instructions('A')).toEqual(['advance']);
   });
 
-  xtest('series of instructions', () => {
+  test('series of instructions', () => {
     expect(Robot.instructions('RAAL'))
       .toEqual(['turnRight', 'advance', 'advance', 'turnLeft']);
   });
 
-  xtest('instruct robot', () => {
+  test('instruct robot', () => {
     robot.place({ x: -2, y: 1, direction: 'east' });
     robot.evaluate('RLAALAL');
     expect(robot.coordinates).toEqual([0, 2]);
     expect(robot.bearing).toEqual('west');
   });
 
-  xtest('instruct many robots', () => {
+  test('instruct many robots', () => {
     const robot1 = new Robot();
     const robot2 = new Robot();
     const robot3 = new Robot();
